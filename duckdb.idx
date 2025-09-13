@@ -1,0 +1,20 @@
+nimTitle	duckdb	duckdb.html	module duckdb		0
+nim	DuckDBInstance	duckdb.html#DuckDBInstance	type DuckDBInstance		22
+nim	DuckDBConnection	duckdb.html#DuckDBConnection	type DuckDBConnection		25
+nim	DuckDBConnectionError	duckdb.html#DuckDBConnectionError	object DuckDBConnectionError		28
+nim	DuckDBQueryError	duckdb.html#DuckDBQueryError	object DuckDBQueryError		29
+nim	DuckDBSuccess	duckdb.html#DuckDBSuccess	const DuckDBSuccess		32
+nim	DuckDBError	duckdb.html#DuckDBError	const DuckDBError		35
+nim	open	duckdb.html#open,string	proc open(path: string): DuckDBInstance		58
+nim	connect	duckdb.html#connect,DuckDBInstance	proc connect(db: DuckDBInstance): DuckDBConnection		64
+nim	close	duckdb.html#close,DuckDBConnection	proc close(db: var DuckDBConnection)		71
+nim	disconnect	duckdb.html#disconnect,DuckDBConnection	proc disconnect(conn: var DuckDBConnection)		75
+nim	exec	duckdb.html#exec,DuckDBConnection,SqlQuery	proc exec(conn: DuckDBConnection; sql: SqlQuery)		79
+nim	tryExec	duckdb.html#tryExec,DuckDBConnection,SqlQuery	proc tryExec(conn: DuckDBConnection; sql: SqlQuery): bool		85
+nim	DuckDBValue	duckdb.html#DuckDBValue	object DuckDBValue		95
+nim	getDuckDBValue	duckdb.html#getDuckDBValue,ptr.duckdb_result,idx_t,idx_t	proc getDuckDBValue(res: ptr duckdb_result; j, i: idx_t): DuckDBValue		148
+nim	Row	duckdb.html#Row	type Row		227
+nim	DuckDBResult	duckdb.html#DuckDBResult	tuple DuckDBResult		230
+nim	`$`	duckdb.html#$,DuckDBValue	proc `$`(value: DuckDBValue): string		237
+nim	toString	duckdb.html#toString,DuckDBValue	proc toString(value: DuckDBValue): string		277
+nim	getAllRows	duckdb.html#getAllRows,DuckDBConnection,SqlQuery	proc getAllRows(conn: DuckDBConnection; sql: SqlQuery): DuckDBResult		281

@@ -1,0 +1,449 @@
+nimTitle	bindings	duckdb/bindings.html	module duckdb/bindings		0
+nim	DuckDBType	duckdb/bindings.html#DuckDBType	enum DuckDBType		19
+nim	duckdb_instance_cache	duckdb/bindings.html#duckdb_instance_cache	type duckdb_instance_cache		60
+nim	duckdb_database	duckdb/bindings.html#duckdb_database	type duckdb_database		61
+nim	duckdb_config	duckdb/bindings.html#duckdb_config	type duckdb_config		62
+nim	duckdb_connection	duckdb/bindings.html#duckdb_connection	type duckdb_connection		63
+nim	duckdb_client_context	duckdb/bindings.html#duckdb_client_context	type duckdb_client_context		64
+nim	duckdb_value	duckdb/bindings.html#duckdb_value	type duckdb_value		65
+nim	duckdb_state	duckdb/bindings.html#duckdb_state	type duckdb_state		67
+nim	duckdb_query_progress_type	duckdb/bindings.html#duckdb_query_progress_type	type duckdb_query_progress_type		69
+nim	idx_t	duckdb/bindings.html#idx_t	type idx_t		70
+nim	duckdb_data_chunk	duckdb/bindings.html#duckdb_data_chunk	type duckdb_data_chunk		71
+nim	duckdb_result_type	duckdb/bindings.html#duckdb_result_type	type duckdb_result_type		72
+nim	duckdb_create_instance_cache	duckdb/bindings.html#duckdb_create_instance_cache	proc duckdb_create_instance_cache(): duckdb_instance_cache		74
+nim	duckdb_get_or_create_from_cache	duckdb/bindings.html#duckdb_get_or_create_from_cache,duckdb_instance_cache,cstring,ptr.duckdb_database,duckdb_config,ptr.cstring	proc duckdb_get_or_create_from_cache(instance_cache: duckdb_instance_cache;\n                                path: cstring;\n                                out_database: ptr duckdb_database;\n                                config: duckdb_config; out_error: ptr cstring): duckdb_state		75
+nim	duckdb_destroy_instance_cache	duckdb/bindings.html#duckdb_destroy_instance_cache,ptr.duckdb_instance_cache	proc duckdb_destroy_instance_cache(instance_cache: ptr duckdb_instance_cache)		76
+nim	duckdb_open	duckdb/bindings.html#duckdb_open,cstring,ptr.duckdb_database	proc duckdb_open(path: cstring; out_database: ptr duckdb_database): duckdb_state		77
+nim	duckdb_open_ext	duckdb/bindings.html#duckdb_open_ext,cstring,ptr.duckdb_database,duckdb_config,ptr.cstring	proc duckdb_open_ext(path: cstring; out_database: ptr duckdb_database;\n                config: duckdb_config; out_error: ptr cstring): duckdb_state		78
+nim	duckdb_close	duckdb/bindings.html#duckdb_close,ptr.duckdb_database	proc duckdb_close(database: ptr duckdb_database)		79
+nim	duckdb_connect	duckdb/bindings.html#duckdb_connect,duckdb_database,ptr.duckdb_connection	proc duckdb_connect(database: duckdb_database; out_connection: ptr duckdb_connection): duckdb_state		80
+nim	duckdb_interrupt	duckdb/bindings.html#duckdb_interrupt,duckdb_connection	proc duckdb_interrupt(connection: duckdb_connection)		81
+nim	duckdb_query_progress	duckdb/bindings.html#duckdb_query_progress,duckdb_connection	proc duckdb_query_progress(connection: duckdb_connection): duckdb_query_progress_type		82
+nim	duckdb_disconnect	duckdb/bindings.html#duckdb_disconnect,ptr.duckdb_connection	proc duckdb_disconnect(connection: ptr duckdb_connection)		83
+nim	duckdb_connection_get_client_context	duckdb/bindings.html#duckdb_connection_get_client_context,duckdb_connection,ptr.duckdb_client_context	proc duckdb_connection_get_client_context(connection: duckdb_connection;\n                                     out_context: ptr duckdb_client_context)		84
+nim	duckdb_client_context_get_connection_id	duckdb/bindings.html#duckdb_client_context_get_connection_id,duckdb_client_context	proc duckdb_client_context_get_connection_id(context: duckdb_client_context): idx_t		85
+nim	duckdb_destroy_client_context	duckdb/bindings.html#duckdb_destroy_client_context,ptr.duckdb_client_context	proc duckdb_destroy_client_context(context: ptr duckdb_client_context)		86
+nim	duckdb_library_version	duckdb/bindings.html#duckdb_library_version	proc duckdb_library_version(): cstring		87
+nim	duckdb_get_table_names	duckdb/bindings.html#duckdb_get_table_names,duckdb_connection,cstring,bool	proc duckdb_get_table_names(connection: duckdb_connection; query: cstring;\n                       qualified: bool): duckdb_value		88
+nim	duckdb_create_config	duckdb/bindings.html#duckdb_create_config,ptr.duckdb_config	proc duckdb_create_config(out_config: ptr duckdb_config): duckdb_state		91
+nim	duckdb_config_count	duckdb/bindings.html#duckdb_config_count	proc duckdb_config_count(): csize_t		92
+nim	duckdb_get_config_flag	duckdb/bindings.html#duckdb_get_config_flag,csize_t,ptr.cstring,ptr.cstring	proc duckdb_get_config_flag(index: csize_t; out_name: ptr cstring;\n                       out_description: ptr cstring): duckdb_state		93
+nim	duckdb_set_config	duckdb/bindings.html#duckdb_set_config,duckdb_config,cstring,cstring	proc duckdb_set_config(config: duckdb_config; name: cstring; option: cstring): duckdb_state		94
+nim	duckdb_destroy_config	duckdb/bindings.html#duckdb_destroy_config,ptr.duckdb_config	proc duckdb_destroy_config(config: ptr duckdb_config)		95
+nim	duckdb_result	duckdb/bindings.html#duckdb_result	object duckdb_result		99
+nim	duckdb_type	duckdb/bindings.html#duckdb_type	type duckdb_type		100
+nim	duckdb_statement_type	duckdb/bindings.html#duckdb_statement_type	type duckdb_statement_type		101
+nim	duckdb_logical_type	duckdb/bindings.html#duckdb_logical_type	type duckdb_logical_type		102
+nim	duckdb_error_type	duckdb/bindings.html#duckdb_error_type	type duckdb_error_type		103
+nim	duckdb_query	duckdb/bindings.html#duckdb_query,duckdb_connection,cstring,ptr.duckdb_result	proc duckdb_query(connection: duckdb_connection; query: cstring;\n             out_result: ptr duckdb_result): duckdb_state		105
+nim	duckdb_destroy_result	duckdb/bindings.html#duckdb_destroy_result,ptr.duckdb_result	proc duckdb_destroy_result(result: ptr duckdb_result)		106
+nim	duckdb_column_name	duckdb/bindings.html#duckdb_column_name,ptr.duckdb_result,idx_t	proc duckdb_column_name(result: ptr duckdb_result; col: idx_t): cstring		107
+nim	duckdb_column_type	duckdb/bindings.html#duckdb_column_type,ptr.duckdb_result,idx_t	proc duckdb_column_type(result: ptr duckdb_result; col: idx_t): duckdb_type		108
+nim	duckdb_result_statement_type	duckdb/bindings.html#duckdb_result_statement_type,duckdb_result	proc duckdb_result_statement_type(result: duckdb_result): duckdb_statement_type		109
+nim	duckdb_column_logical_type	duckdb/bindings.html#duckdb_column_logical_type,ptr.duckdb_result,idx_t	proc duckdb_column_logical_type(result: ptr duckdb_result; col: idx_t): duckdb_logical_type		110
+nim	duckdb_column_count	duckdb/bindings.html#duckdb_column_count,ptr.duckdb_result	proc duckdb_column_count(result: ptr duckdb_result): idx_t		111
+nim	duckdb_row_count	duckdb/bindings.html#duckdb_row_count,ptr.duckdb_result	proc duckdb_row_count(result: ptr duckdb_result): idx_t		112
+nim	duckdb_rows_changed	duckdb/bindings.html#duckdb_rows_changed,ptr.duckdb_result	proc duckdb_rows_changed(result: ptr duckdb_result): idx_t		113
+nim	duckdb_column_data	duckdb/bindings.html#duckdb_column_data,ptr.duckdb_result,idx_t	proc duckdb_column_data(result: ptr duckdb_result; col: idx_t): pointer		114
+nim	duckdb_nullmask_data	duckdb/bindings.html#duckdb_nullmask_data,ptr.duckdb_result,idx_t	proc duckdb_nullmask_data(result: ptr duckdb_result; col: idx_t): ptr bool		115
+nim	duckdb_result_error	duckdb/bindings.html#duckdb_result_error,ptr.duckdb_result	proc duckdb_result_error(result: ptr duckdb_result): cstring		116
+nim	duckdb_result_error_type	duckdb/bindings.html#duckdb_result_error_type,ptr.duckdb_result	proc duckdb_result_error_type(result: ptr duckdb_result): duckdb_error_type		117
+nim	duckdb_result_get_chunk	duckdb/bindings.html#duckdb_result_get_chunk,duckdb_result,idx_t	proc duckdb_result_get_chunk(result: duckdb_result; chunk_index: idx_t): duckdb_data_chunk		118
+nim	duckdb_result_is_streaming	duckdb/bindings.html#duckdb_result_is_streaming,duckdb_result	proc duckdb_result_is_streaming(result: duckdb_result): bool		119
+nim	duckdb_result_chunk_count	duckdb/bindings.html#duckdb_result_chunk_count,duckdb_result	proc duckdb_result_chunk_count(result: duckdb_result): idx_t		120
+nim	duckdb_result_return_type	duckdb/bindings.html#duckdb_result_return_type,duckdb_result	proc duckdb_result_return_type(result: duckdb_result): duckdb_result_type		121
+nim	duckdb_hugeint	duckdb/bindings.html#duckdb_hugeint	object duckdb_hugeint		124
+nim	duckdb_uhugeint	duckdb/bindings.html#duckdb_uhugeint	object duckdb_uhugeint		128
+nim	duckdb_decimal	duckdb/bindings.html#duckdb_decimal	object duckdb_decimal		132
+nim	duckdb_date	duckdb/bindings.html#duckdb_date	type duckdb_date		137
+nim	duckdb_time	duckdb/bindings.html#duckdb_time	type duckdb_time		138
+nim	duckdb_timestamp	duckdb/bindings.html#duckdb_timestamp	type duckdb_timestamp		139
+nim	duckdb_interval	duckdb/bindings.html#duckdb_interval	object duckdb_interval		141
+nim	duckdb_string	duckdb/bindings.html#duckdb_string	object duckdb_string		146
+nim	duckdb_blob	duckdb/bindings.html#duckdb_blob	object duckdb_blob		150
+nim	duckdb_value_boolean	duckdb/bindings.html#duckdb_value_boolean,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_boolean(result: ptr duckdb_result; col, row: idx_t): bool		154
+nim	duckdb_value_int8	duckdb/bindings.html#duckdb_value_int8,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_int8(result: ptr duckdb_result; col, row: idx_t): int8		155
+nim	duckdb_value_int16	duckdb/bindings.html#duckdb_value_int16,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_int16(result: ptr duckdb_result; col, row: idx_t): int16		156
+nim	duckdb_value_int32	duckdb/bindings.html#duckdb_value_int32,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_int32(result: ptr duckdb_result; col, row: idx_t): int32		157
+nim	duckdb_value_int64	duckdb/bindings.html#duckdb_value_int64,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_int64(result: ptr duckdb_result; col, row: idx_t): int64		158
+nim	duckdb_value_hugeint	duckdb/bindings.html#duckdb_value_hugeint,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_hugeint(result: ptr duckdb_result; col, row: idx_t): duckdb_hugeint		159
+nim	duckdb_value_uhugeint	duckdb/bindings.html#duckdb_value_uhugeint,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_uhugeint(result: ptr duckdb_result; col, row: idx_t): duckdb_uhugeint		160
+nim	duckdb_value_decimal	duckdb/bindings.html#duckdb_value_decimal,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_decimal(result: ptr duckdb_result; col, row: idx_t): duckdb_decimal		161
+nim	duckdb_value_uint8	duckdb/bindings.html#duckdb_value_uint8,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_uint8(result: ptr duckdb_result; col, row: idx_t): uint8		162
+nim	duckdb_value_uint16	duckdb/bindings.html#duckdb_value_uint16,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_uint16(result: ptr duckdb_result; col, row: idx_t): uint16		163
+nim	duckdb_value_uint32	duckdb/bindings.html#duckdb_value_uint32,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_uint32(result: ptr duckdb_result; col, row: idx_t): uint32		164
+nim	duckdb_value_uint64	duckdb/bindings.html#duckdb_value_uint64,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_uint64(result: ptr duckdb_result; col, row: idx_t): uint64		165
+nim	duckdb_value_float	duckdb/bindings.html#duckdb_value_float,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_float(result: ptr duckdb_result; col, row: idx_t): float32		166
+nim	duckdb_value_double	duckdb/bindings.html#duckdb_value_double,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_double(result: ptr duckdb_result; col, row: idx_t): float64		167
+nim	duckdb_value_date	duckdb/bindings.html#duckdb_value_date,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_date(result: ptr duckdb_result; col, row: idx_t): duckdb_date		168
+nim	duckdb_value_time	duckdb/bindings.html#duckdb_value_time,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_time(result: ptr duckdb_result; col, row: idx_t): duckdb_time		169
+nim	duckdb_value_timestamp	duckdb/bindings.html#duckdb_value_timestamp,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_timestamp(result: ptr duckdb_result; col, row: idx_t): duckdb_timestamp		170
+nim	duckdb_value_interval	duckdb/bindings.html#duckdb_value_interval,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_interval(result: ptr duckdb_result; col, row: idx_t): duckdb_interval		171
+nim	duckdb_value_varchar	duckdb/bindings.html#duckdb_value_varchar,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_varchar(result: ptr duckdb_result; col, row: idx_t): cstring		172
+nim	duckdb_value_string	duckdb/bindings.html#duckdb_value_string,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_string(result: ptr duckdb_result; col, row: idx_t): duckdb_string		173
+nim	duckdb_value_varchar_internal	duckdb/bindings.html#duckdb_value_varchar_internal,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_varchar_internal(result: ptr duckdb_result; col, row: idx_t): cstring		174
+nim	duckdb_value_string_internal	duckdb/bindings.html#duckdb_value_string_internal,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_string_internal(result: ptr duckdb_result; col, row: idx_t): duckdb_string		175
+nim	duckdb_value_blob	duckdb/bindings.html#duckdb_value_blob,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_blob(result: ptr duckdb_result; col, row: idx_t): duckdb_blob		176
+nim	duckdb_value_is_null	duckdb/bindings.html#duckdb_value_is_null,ptr.duckdb_result,idx_t,idx_t	proc duckdb_value_is_null(result: ptr duckdb_result; col, row: idx_t): bool		177
+nim	duckdb_string_t	duckdb/bindings.html#duckdb_string_t	object duckdb_string_t		180
+nim	duckdb_malloc	duckdb/bindings.html#duckdb_malloc,csize_t	proc duckdb_malloc(size: csize_t): pointer		183
+nim	duckdb_free	duckdb/bindings.html#duckdb_free,pointer	proc duckdb_free(ptr: pointer)		184
+nim	duckdb_vector_size	duckdb/bindings.html#duckdb_vector_size	proc duckdb_vector_size(): idx_t		185
+nim	duckdb_string_is_inlined	duckdb/bindings.html#duckdb_string_is_inlined,duckdb_string_t	proc duckdb_string_is_inlined(str: duckdb_string_t): bool		186
+nim	duckdb_string_t_length	duckdb/bindings.html#duckdb_string_t_length,duckdb_string_t	proc duckdb_string_t_length(str: duckdb_string_t): uint32		187
+nim	duckdb_string_t_data	duckdb/bindings.html#duckdb_string_t_data,ptr.duckdb_string_t	proc duckdb_string_t_data(str: ptr duckdb_string_t): cstring		188
+nim	duckdb_date_struct	duckdb/bindings.html#duckdb_date_struct	object duckdb_date_struct		191
+nim	duckdb_time_struct	duckdb/bindings.html#duckdb_time_struct	object duckdb_time_struct		195
+nim	duckdb_time_tz	duckdb/bindings.html#duckdb_time_tz	type duckdb_time_tz		200
+nim	duckdb_time_tz_struct	duckdb/bindings.html#duckdb_time_tz_struct	object duckdb_time_tz_struct		201
+nim	duckdb_timestamp_struct	duckdb/bindings.html#duckdb_timestamp_struct	object duckdb_timestamp_struct		207
+nim	duckdb_timestamp_s	duckdb/bindings.html#duckdb_timestamp_s	type duckdb_timestamp_s		210
+nim	duckdb_timestamp_ms	duckdb/bindings.html#duckdb_timestamp_ms	type duckdb_timestamp_ms		211
+nim	duckdb_timestamp_ns	duckdb/bindings.html#duckdb_timestamp_ns	type duckdb_timestamp_ns		212
+nim	duckdb_from_date	duckdb/bindings.html#duckdb_from_date,duckdb_date	proc duckdb_from_date(date: duckdb_date): duckdb_date_struct		214
+nim	duckdb_to_date	duckdb/bindings.html#duckdb_to_date,duckdb_date_struct	proc duckdb_to_date(date: duckdb_date_struct): duckdb_date		215
+nim	duckdb_is_finite_date	duckdb/bindings.html#duckdb_is_finite_date,duckdb_date	proc duckdb_is_finite_date(date: duckdb_date): bool		216
+nim	duckdb_from_time	duckdb/bindings.html#duckdb_from_time,duckdb_time	proc duckdb_from_time(time: duckdb_time): duckdb_time_struct		217
+nim	duckdb_create_time_tz	duckdb/bindings.html#duckdb_create_time_tz,int64,int32	proc duckdb_create_time_tz(micros: int64; offset: int32): duckdb_time_tz		218
+nim	duckdb_from_time_tz	duckdb/bindings.html#duckdb_from_time_tz,duckdb_time_tz	proc duckdb_from_time_tz(micros: duckdb_time_tz): duckdb_time_tz_struct		219
+nim	duckdb_to_time	duckdb/bindings.html#duckdb_to_time,duckdb_time_struct	proc duckdb_to_time(time: duckdb_time_struct): duckdb_time		220
+nim	duckdb_from_timestamp	duckdb/bindings.html#duckdb_from_timestamp,duckdb_timestamp	proc duckdb_from_timestamp(ts: duckdb_timestamp): duckdb_timestamp_struct		221
+nim	duckdb_to_timestamp	duckdb/bindings.html#duckdb_to_timestamp,duckdb_timestamp_struct	proc duckdb_to_timestamp(ts: duckdb_timestamp_struct): duckdb_timestamp		222
+nim	duckdb_is_finite_timestamp	duckdb/bindings.html#duckdb_is_finite_timestamp,duckdb_timestamp	proc duckdb_is_finite_timestamp(ts: duckdb_timestamp): bool		223
+nim	duckdb_is_finite_timestamp_s	duckdb/bindings.html#duckdb_is_finite_timestamp_s,duckdb_timestamp_s	proc duckdb_is_finite_timestamp_s(ts: duckdb_timestamp_s): bool		224
+nim	duckdb_is_finite_timestamp_ms	duckdb/bindings.html#duckdb_is_finite_timestamp_ms,duckdb_timestamp_ms	proc duckdb_is_finite_timestamp_ms(ts: duckdb_timestamp_ms): bool		225
+nim	duckdb_is_finite_timestamp_ns	duckdb/bindings.html#duckdb_is_finite_timestamp_ns,duckdb_timestamp_ns	proc duckdb_is_finite_timestamp_ns(ts: duckdb_timestamp_ns): bool		226
+nim	duckdb_hugeint_to_double	duckdb/bindings.html#duckdb_hugeint_to_double,duckdb_hugeint	proc duckdb_hugeint_to_double(val: duckdb_hugeint): float64		229
+nim	duckdb_double_to_hugeint	duckdb/bindings.html#duckdb_double_to_hugeint,float64	proc duckdb_double_to_hugeint(val: float64): duckdb_hugeint		230
+nim	duckdb_uhugeint_to_double	duckdb/bindings.html#duckdb_uhugeint_to_double,duckdb_uhugeint	proc duckdb_uhugeint_to_double(val: duckdb_uhugeint): float64		233
+nim	duckdb_double_to_uhugeint	duckdb/bindings.html#duckdb_double_to_uhugeint,float64	proc duckdb_double_to_uhugeint(val: float64): duckdb_uhugeint		234
+nim	duckdb_double_to_decimal	duckdb/bindings.html#duckdb_double_to_decimal,float64,uint8,uint8	proc duckdb_double_to_decimal(val: float64; width: uint8; scale: uint8): duckdb_decimal		237
+nim	duckdb_decimal_to_double	duckdb/bindings.html#duckdb_decimal_to_double,duckdb_decimal	proc duckdb_decimal_to_double(val: duckdb_decimal): float64		238
+nim	duckdb_prepared_statement	duckdb/bindings.html#duckdb_prepared_statement	type duckdb_prepared_statement		241
+nim	duckdb_prepare	duckdb/bindings.html#duckdb_prepare,duckdb_connection,cstring,ptr.duckdb_prepared_statement	proc duckdb_prepare(connection: duckdb_connection; query: cstring;\n               out_prepared_statement: ptr duckdb_prepared_statement): duckdb_state		246
+nim	duckdb_destroy_prepare	duckdb/bindings.html#duckdb_destroy_prepare,ptr.duckdb_prepared_statement	proc duckdb_destroy_prepare(prepared_statement: ptr duckdb_prepared_statement)		251
+nim	duckdb_prepare_error	duckdb/bindings.html#duckdb_prepare_error,duckdb_prepared_statement	proc duckdb_prepare_error(prepared_statement: duckdb_prepared_statement): cstring		252
+nim	duckdb_nparams	duckdb/bindings.html#duckdb_nparams,duckdb_prepared_statement	proc duckdb_nparams(prepared_statement: duckdb_prepared_statement): idx_t		253
+nim	duckdb_parameter_name	duckdb/bindings.html#duckdb_parameter_name,duckdb_prepared_statement,idx_t	proc duckdb_parameter_name(prepared_statement: duckdb_prepared_statement;\n                      index: idx_t): cstring		254
+nim	duckdb_param_type	duckdb/bindings.html#duckdb_param_type,duckdb_prepared_statement,idx_t	proc duckdb_param_type(prepared_statement: duckdb_prepared_statement;\n                  param_idx: idx_t): duckdb_type		255
+nim	duckdb_param_logical_type	duckdb/bindings.html#duckdb_param_logical_type,duckdb_prepared_statement,idx_t	proc duckdb_param_logical_type(prepared_statement: duckdb_prepared_statement;\n                          param_idx: idx_t): duckdb_logical_type		256
+nim	duckdb_clear_bindings	duckdb/bindings.html#duckdb_clear_bindings,duckdb_prepared_statement	proc duckdb_clear_bindings(prepared_statement: duckdb_prepared_statement): duckdb_state		257
+nim	duckdb_prepared_statement_type	duckdb/bindings.html#duckdb_prepared_statement_type,duckdb_prepared_statement	proc duckdb_prepared_statement_type(statement: duckdb_prepared_statement): duckdb_statement_type		258
+nim	duckdb_bind_value	duckdb/bindings.html#duckdb_bind_value,duckdb_prepared_statement,idx_t,duckdb_value	proc duckdb_bind_value(prepared_statement: duckdb_prepared_statement;\n                  param_idx: idx_t; val: duckdb_value): duckdb_state		263
+nim	duckdb_bind_parameter_index	duckdb/bindings.html#duckdb_bind_parameter_index,duckdb_prepared_statement,ptr.idx_t,cstring	proc duckdb_bind_parameter_index(prepared_statement: duckdb_prepared_statement;\n                            param_idx_out: ptr idx_t; name: cstring): duckdb_state		264
+nim	duckdb_bind_boolean	duckdb/bindings.html#duckdb_bind_boolean,duckdb_prepared_statement,idx_t,bool	proc duckdb_bind_boolean(prepared_statement: duckdb_prepared_statement;\n                    param_idx: idx_t; val: bool): duckdb_state		265
+nim	duckdb_bind_int8	duckdb/bindings.html#duckdb_bind_int8,duckdb_prepared_statement,idx_t,int8	proc duckdb_bind_int8(prepared_statement: duckdb_prepared_statement;\n                 param_idx: idx_t; val: int8): duckdb_state		266
+nim	duckdb_bind_int16	duckdb/bindings.html#duckdb_bind_int16,duckdb_prepared_statement,idx_t,int16	proc duckdb_bind_int16(prepared_statement: duckdb_prepared_statement;\n                  param_idx: idx_t; val: int16): duckdb_state		267
+nim	duckdb_bind_int32	duckdb/bindings.html#duckdb_bind_int32,duckdb_prepared_statement,idx_t,int32	proc duckdb_bind_int32(prepared_statement: duckdb_prepared_statement;\n                  param_idx: idx_t; val: int32): duckdb_state		268
+nim	duckdb_bind_int64	duckdb/bindings.html#duckdb_bind_int64,duckdb_prepared_statement,idx_t,int64	proc duckdb_bind_int64(prepared_statement: duckdb_prepared_statement;\n                  param_idx: idx_t; val: int64): duckdb_state		269
+nim	duckdb_bind_hugeint	duckdb/bindings.html#duckdb_bind_hugeint,duckdb_prepared_statement,idx_t,duckdb_hugeint	proc duckdb_bind_hugeint(prepared_statement: duckdb_prepared_statement;\n                    param_idx: idx_t; val: duckdb_hugeint): duckdb_state		270
+nim	duckdb_bind_uhugeint	duckdb/bindings.html#duckdb_bind_uhugeint,duckdb_prepared_statement,idx_t,duckdb_uhugeint	proc duckdb_bind_uhugeint(prepared_statement: duckdb_prepared_statement;\n                     param_idx: idx_t; val: duckdb_uhugeint): duckdb_state		271
+nim	duckdb_bind_decimal	duckdb/bindings.html#duckdb_bind_decimal,duckdb_prepared_statement,idx_t,duckdb_decimal	proc duckdb_bind_decimal(prepared_statement: duckdb_prepared_statement;\n                    param_idx: idx_t; val: duckdb_decimal): duckdb_state		272
+nim	duckdb_bind_uint8	duckdb/bindings.html#duckdb_bind_uint8,duckdb_prepared_statement,idx_t,uint8	proc duckdb_bind_uint8(prepared_statement: duckdb_prepared_statement;\n                  param_idx: idx_t; val: uint8): duckdb_state		273
+nim	duckdb_bind_uint16	duckdb/bindings.html#duckdb_bind_uint16,duckdb_prepared_statement,idx_t,uint16	proc duckdb_bind_uint16(prepared_statement: duckdb_prepared_statement;\n                   param_idx: idx_t; val: uint16): duckdb_state		274
+nim	duckdb_bind_uint32	duckdb/bindings.html#duckdb_bind_uint32,duckdb_prepared_statement,idx_t,uint32	proc duckdb_bind_uint32(prepared_statement: duckdb_prepared_statement;\n                   param_idx: idx_t; val: uint32): duckdb_state		275
+nim	duckdb_bind_uint64	duckdb/bindings.html#duckdb_bind_uint64,duckdb_prepared_statement,idx_t,uint64	proc duckdb_bind_uint64(prepared_statement: duckdb_prepared_statement;\n                   param_idx: idx_t; val: uint64): duckdb_state		276
+nim	duckdb_bind_float	duckdb/bindings.html#duckdb_bind_float,duckdb_prepared_statement,idx_t,float32	proc duckdb_bind_float(prepared_statement: duckdb_prepared_statement;\n                  param_idx: idx_t; val: float32): duckdb_state		277
+nim	duckdb_bind_double	duckdb/bindings.html#duckdb_bind_double,duckdb_prepared_statement,idx_t,float64	proc duckdb_bind_double(prepared_statement: duckdb_prepared_statement;\n                   param_idx: idx_t; val: float64): duckdb_state		278
+nim	duckdb_bind_date	duckdb/bindings.html#duckdb_bind_date,duckdb_prepared_statement,idx_t,duckdb_date	proc duckdb_bind_date(prepared_statement: duckdb_prepared_statement;\n                 param_idx: idx_t; val: duckdb_date): duckdb_state		279
+nim	duckdb_bind_time	duckdb/bindings.html#duckdb_bind_time,duckdb_prepared_statement,idx_t,duckdb_time	proc duckdb_bind_time(prepared_statement: duckdb_prepared_statement;\n                 param_idx: idx_t; val: duckdb_time): duckdb_state		280
+nim	duckdb_bind_timestamp	duckdb/bindings.html#duckdb_bind_timestamp,duckdb_prepared_statement,idx_t,duckdb_timestamp	proc duckdb_bind_timestamp(prepared_statement: duckdb_prepared_statement;\n                      param_idx: idx_t; val: duckdb_timestamp): duckdb_state		281
+nim	duckdb_bind_timestamp_tz	duckdb/bindings.html#duckdb_bind_timestamp_tz,duckdb_prepared_statement,idx_t,duckdb_timestamp	proc duckdb_bind_timestamp_tz(prepared_statement: duckdb_prepared_statement;\n                         param_idx: idx_t; val: duckdb_timestamp): duckdb_state		282
+nim	duckdb_bind_interval	duckdb/bindings.html#duckdb_bind_interval,duckdb_prepared_statement,idx_t,duckdb_interval	proc duckdb_bind_interval(prepared_statement: duckdb_prepared_statement;\n                     param_idx: idx_t; val: duckdb_interval): duckdb_state		283
+nim	duckdb_bind_varchar	duckdb/bindings.html#duckdb_bind_varchar,duckdb_prepared_statement,idx_t,cstring	proc duckdb_bind_varchar(prepared_statement: duckdb_prepared_statement;\n                    param_idx: idx_t; val: cstring): duckdb_state		284
+nim	duckdb_bind_varchar_length	duckdb/bindings.html#duckdb_bind_varchar_length,duckdb_prepared_statement,idx_t,cstring,idx_t	proc duckdb_bind_varchar_length(prepared_statement: duckdb_prepared_statement;\n                           param_idx: idx_t; val: cstring; length: idx_t): duckdb_state		285
+nim	duckdb_bind_blob	duckdb/bindings.html#duckdb_bind_blob,duckdb_prepared_statement,idx_t,pointer,idx_t	proc duckdb_bind_blob(prepared_statement: duckdb_prepared_statement;\n                 param_idx: idx_t; data: pointer; length: idx_t): duckdb_state		286
+nim	duckdb_bind_null	duckdb/bindings.html#duckdb_bind_null,duckdb_prepared_statement,idx_t	proc duckdb_bind_null(prepared_statement: duckdb_prepared_statement; param_idx: idx_t): duckdb_state		287
+nim	duckdb_execute_prepared	duckdb/bindings.html#duckdb_execute_prepared,duckdb_prepared_statement,ptr.duckdb_result	proc duckdb_execute_prepared(prepared_statement: duckdb_prepared_statement;\n                        out_result: ptr duckdb_result): duckdb_state		292
+nim	duckdb_execute_prepared_streaming	duckdb/bindings.html#duckdb_execute_prepared_streaming,duckdb_prepared_statement,ptr.duckdb_result	proc duckdb_execute_prepared_streaming(prepared_statement: duckdb_prepared_statement;\n                                  out_result: ptr duckdb_result): duckdb_state		293
+nim	duckdb_extracted_statements	duckdb/bindings.html#duckdb_extracted_statements	type duckdb_extracted_statements		296
+nim	duckdb_extract_statements	duckdb/bindings.html#duckdb_extract_statements,duckdb_connection,cstring,ptr.duckdb_extracted_statements	proc duckdb_extract_statements(connection: duckdb_connection; query: cstring;\n    out_extracted_statements: ptr duckdb_extracted_statements): idx_t		299
+nim	duckdb_prepare_extracted_statement	duckdb/bindings.html#duckdb_prepare_extracted_statement,duckdb_connection,duckdb_extracted_statements,idx_t,ptr.duckdb_prepared_statement	proc duckdb_prepare_extracted_statement(connection: duckdb_connection;\n    extracted_statements: duckdb_extracted_statements; index: idx_t;\n    out_prepared_statement: ptr duckdb_prepared_statement): duckdb_state		305
+nim	duckdb_extract_statements_error	duckdb/bindings.html#duckdb_extract_statements_error,duckdb_extracted_statements	proc duckdb_extract_statements_error(extracted_statements: duckdb_extracted_statements): cstring		312
+nim	duckdb_destroy_extracted	duckdb/bindings.html#duckdb_destroy_extracted,ptr.duckdb_extracted_statements	proc duckdb_destroy_extracted(extracted_statements: ptr duckdb_extracted_statements)		316
+nim	duckdb_pending_result	duckdb/bindings.html#duckdb_pending_result	type duckdb_pending_result		321
+nim	duckdb_pending_state	duckdb/bindings.html#duckdb_pending_state	type duckdb_pending_state		322
+nim	duckdb_varint	duckdb/bindings.html#duckdb_varint	type duckdb_varint		323
+nim	duckdb_bit	duckdb/bindings.html#duckdb_bit	type duckdb_bit		324
+nim	duckdb_pending_prepared	duckdb/bindings.html#duckdb_pending_prepared,duckdb_prepared_statement,ptr.duckdb_pending_result	proc duckdb_pending_prepared(prepared_statement: duckdb_prepared_statement;\n                        out_result: ptr duckdb_pending_result): duckdb_state		329
+nim	duckdb_pending_prepared_streaming	duckdb/bindings.html#duckdb_pending_prepared_streaming,duckdb_prepared_statement,ptr.duckdb_pending_result	proc duckdb_pending_prepared_streaming(prepared_statement: duckdb_prepared_statement;\n                                  out_result: ptr duckdb_pending_result): duckdb_state		330
+nim	duckdb_destroy_pending	duckdb/bindings.html#duckdb_destroy_pending,ptr.duckdb_pending_result	proc duckdb_destroy_pending(pending_result: ptr duckdb_pending_result)		331
+nim	duckdb_pending_error	duckdb/bindings.html#duckdb_pending_error,duckdb_pending_result	proc duckdb_pending_error(pending_result: duckdb_pending_result): cstring		332
+nim	duckdb_pending_execute_task	duckdb/bindings.html#duckdb_pending_execute_task,duckdb_pending_result	proc duckdb_pending_execute_task(pending_result: duckdb_pending_result): duckdb_pending_state		333
+nim	duckdb_pending_execute_check_state	duckdb/bindings.html#duckdb_pending_execute_check_state,duckdb_pending_result	proc duckdb_pending_execute_check_state(pending_result: duckdb_pending_result): duckdb_pending_state		334
+nim	duckdb_execute_pending	duckdb/bindings.html#duckdb_execute_pending,duckdb_pending_result,ptr.duckdb_result	proc duckdb_execute_pending(pending_result: duckdb_pending_result;\n                       out_result: ptr duckdb_result): duckdb_state		335
+nim	duckdb_pending_execution_is_finished	duckdb/bindings.html#duckdb_pending_execution_is_finished,duckdb_pending_state	proc duckdb_pending_execution_is_finished(pending_state: duckdb_pending_state): bool		336
+nim	duckdb_destroy_value	duckdb/bindings.html#duckdb_destroy_value,ptr.duckdb_value	proc duckdb_destroy_value(value: ptr duckdb_value)		341
+nim	duckdb_create_varchar	duckdb/bindings.html#duckdb_create_varchar,cstring	proc duckdb_create_varchar(text: cstring): duckdb_value		342
+nim	duckdb_create_varchar_length	duckdb/bindings.html#duckdb_create_varchar_length,cstring,idx_t	proc duckdb_create_varchar_length(text: cstring; length: idx_t): duckdb_value		343
+nim	duckdb_create_bool	duckdb/bindings.html#duckdb_create_bool,bool	proc duckdb_create_bool(input: bool): duckdb_value		344
+nim	duckdb_create_int8	duckdb/bindings.html#duckdb_create_int8,int8	proc duckdb_create_int8(input: int8): duckdb_value		345
+nim	duckdb_create_uint8	duckdb/bindings.html#duckdb_create_uint8,uint8	proc duckdb_create_uint8(input: uint8): duckdb_value		346
+nim	duckdb_create_int16	duckdb/bindings.html#duckdb_create_int16,int16	proc duckdb_create_int16(input: int16): duckdb_value		347
+nim	duckdb_create_uint16	duckdb/bindings.html#duckdb_create_uint16,uint16	proc duckdb_create_uint16(input: uint16): duckdb_value		348
+nim	duckdb_create_int32	duckdb/bindings.html#duckdb_create_int32,int32	proc duckdb_create_int32(input: int32): duckdb_value		349
+nim	duckdb_create_uint32	duckdb/bindings.html#duckdb_create_uint32,uint32	proc duckdb_create_uint32(input: uint32): duckdb_value		350
+nim	duckdb_create_uint64	duckdb/bindings.html#duckdb_create_uint64,uint64	proc duckdb_create_uint64(input: uint64): duckdb_value		351
+nim	duckdb_create_int64	duckdb/bindings.html#duckdb_create_int64,int64	proc duckdb_create_int64(val: int64): duckdb_value		352
+nim	duckdb_create_hugeint	duckdb/bindings.html#duckdb_create_hugeint,duckdb_hugeint	proc duckdb_create_hugeint(input: duckdb_hugeint): duckdb_value		353
+nim	duckdb_create_uhugeint	duckdb/bindings.html#duckdb_create_uhugeint,duckdb_uhugeint	proc duckdb_create_uhugeint(input: duckdb_uhugeint): duckdb_value		354
+nim	duckdb_create_varint	duckdb/bindings.html#duckdb_create_varint,duckdb_hugeint	proc duckdb_create_varint(input: duckdb_varint): duckdb_value		355
+nim	duckdb_create_decimal	duckdb/bindings.html#duckdb_create_decimal,duckdb_decimal	proc duckdb_create_decimal(input: duckdb_decimal): duckdb_value		356
+nim	duckdb_create_float	duckdb/bindings.html#duckdb_create_float,float32	proc duckdb_create_float(input: float32): duckdb_value		357
+nim	duckdb_create_double	duckdb/bindings.html#duckdb_create_double,float64	proc duckdb_create_double(input: float64): duckdb_value		358
+nim	duckdb_create_date	duckdb/bindings.html#duckdb_create_date,duckdb_date	proc duckdb_create_date(input: duckdb_date): duckdb_value		359
+nim	duckdb_create_time	duckdb/bindings.html#duckdb_create_time,duckdb_time	proc duckdb_create_time(input: duckdb_time): duckdb_value		360
+nim	duckdb_create_time_tz_value	duckdb/bindings.html#duckdb_create_time_tz_value,duckdb_time_tz	proc duckdb_create_time_tz_value(value: duckdb_time_tz): duckdb_value		361
+nim	duckdb_create_timestamp	duckdb/bindings.html#duckdb_create_timestamp,duckdb_timestamp	proc duckdb_create_timestamp(input: duckdb_timestamp): duckdb_value		362
+nim	duckdb_create_timestamp_tz	duckdb/bindings.html#duckdb_create_timestamp_tz,duckdb_timestamp	proc duckdb_create_timestamp_tz(input: duckdb_timestamp): duckdb_value		363
+nim	duckdb_create_timestamp_s	duckdb/bindings.html#duckdb_create_timestamp_s,duckdb_timestamp_s	proc duckdb_create_timestamp_s(input: duckdb_timestamp_s): duckdb_value		364
+nim	duckdb_create_timestamp_ms	duckdb/bindings.html#duckdb_create_timestamp_ms,duckdb_timestamp_ms	proc duckdb_create_timestamp_ms(input: duckdb_timestamp_ms): duckdb_value		365
+nim	duckdb_create_timestamp_ns	duckdb/bindings.html#duckdb_create_timestamp_ns,duckdb_timestamp_ns	proc duckdb_create_timestamp_ns(input: duckdb_timestamp_ns): duckdb_value		366
+nim	duckdb_create_interval	duckdb/bindings.html#duckdb_create_interval,duckdb_interval	proc duckdb_create_interval(input: duckdb_interval): duckdb_value		367
+nim	duckdb_create_blob	duckdb/bindings.html#duckdb_create_blob,ptr.uint8,idx_t	proc duckdb_create_blob(data: ptr uint8; length: idx_t): duckdb_value		368
+nim	duckdb_create_bit	duckdb/bindings.html#duckdb_create_bit,duckdb_bit	proc duckdb_create_bit(input: duckdb_bit): duckdb_value		369
+nim	duckdb_create_uuid	duckdb/bindings.html#duckdb_create_uuid,duckdb_uhugeint	proc duckdb_create_uuid(input: duckdb_uhugeint): duckdb_value		370
+nim	duckdb_get_bool	duckdb/bindings.html#duckdb_get_bool,duckdb_value	proc duckdb_get_bool(val: duckdb_value): bool		371
+nim	duckdb_get_int8	duckdb/bindings.html#duckdb_get_int8,duckdb_value	proc duckdb_get_int8(val: duckdb_value): int8		372
+nim	duckdb_get_uint8	duckdb/bindings.html#duckdb_get_uint8,duckdb_value	proc duckdb_get_uint8(val: duckdb_value): uint8		373
+nim	duckdb_get_int16	duckdb/bindings.html#duckdb_get_int16,duckdb_value	proc duckdb_get_int16(val: duckdb_value): int16		374
+nim	duckdb_get_uint16	duckdb/bindings.html#duckdb_get_uint16,duckdb_value	proc duckdb_get_uint16(val: duckdb_value): uint16		375
+nim	duckdb_get_int32	duckdb/bindings.html#duckdb_get_int32,duckdb_value	proc duckdb_get_int32(val: duckdb_value): int32		376
+nim	duckdb_get_uint32	duckdb/bindings.html#duckdb_get_uint32,duckdb_value	proc duckdb_get_uint32(val: duckdb_value): uint32		377
+nim	duckdb_get_int64	duckdb/bindings.html#duckdb_get_int64,duckdb_value	proc duckdb_get_int64(val: duckdb_value): int64		378
+nim	duckdb_get_uint64	duckdb/bindings.html#duckdb_get_uint64,duckdb_value	proc duckdb_get_uint64(val: duckdb_value): uint64		379
+nim	duckdb_get_hugeint	duckdb/bindings.html#duckdb_get_hugeint,duckdb_value	proc duckdb_get_hugeint(val: duckdb_value): duckdb_hugeint		380
+nim	duckdb_get_uhugeint	duckdb/bindings.html#duckdb_get_uhugeint,duckdb_value	proc duckdb_get_uhugeint(val: duckdb_value): duckdb_uhugeint		381
+nim	duckdb_get_varint	duckdb/bindings.html#duckdb_get_varint,duckdb_value	proc duckdb_get_varint(val: duckdb_value): duckdb_varint		382
+nim	duckdb_get_decimal	duckdb/bindings.html#duckdb_get_decimal,duckdb_value	proc duckdb_get_decimal(val: duckdb_value): duckdb_decimal		383
+nim	duckdb_get_float	duckdb/bindings.html#duckdb_get_float,duckdb_value	proc duckdb_get_float(val: duckdb_value): float32		384
+nim	duckdb_get_double	duckdb/bindings.html#duckdb_get_double,duckdb_value	proc duckdb_get_double(val: duckdb_value): float64		385
+nim	duckdb_get_date	duckdb/bindings.html#duckdb_get_date,duckdb_value	proc duckdb_get_date(val: duckdb_value): duckdb_date		386
+nim	duckdb_get_time	duckdb/bindings.html#duckdb_get_time,duckdb_value	proc duckdb_get_time(val: duckdb_value): duckdb_time		387
+nim	duckdb_get_time_tz	duckdb/bindings.html#duckdb_get_time_tz,duckdb_value	proc duckdb_get_time_tz(val: duckdb_value): duckdb_time_tz		388
+nim	duckdb_get_timestamp	duckdb/bindings.html#duckdb_get_timestamp,duckdb_value	proc duckdb_get_timestamp(val: duckdb_value): duckdb_timestamp		389
+nim	duckdb_get_timestamp_tz	duckdb/bindings.html#duckdb_get_timestamp_tz,duckdb_value	proc duckdb_get_timestamp_tz(val: duckdb_value): duckdb_timestamp		390
+nim	duckdb_get_timestamp_s	duckdb/bindings.html#duckdb_get_timestamp_s,duckdb_value	proc duckdb_get_timestamp_s(val: duckdb_value): duckdb_timestamp_s		391
+nim	duckdb_get_timestamp_ms	duckdb/bindings.html#duckdb_get_timestamp_ms,duckdb_value	proc duckdb_get_timestamp_ms(val: duckdb_value): duckdb_timestamp_ms		392
+nim	duckdb_get_timestamp_ns	duckdb/bindings.html#duckdb_get_timestamp_ns,duckdb_value	proc duckdb_get_timestamp_ns(val: duckdb_value): duckdb_timestamp_ns		393
+nim	duckdb_get_interval	duckdb/bindings.html#duckdb_get_interval,duckdb_value	proc duckdb_get_interval(val: duckdb_value): duckdb_interval		394
+nim	duckdb_get_value_type	duckdb/bindings.html#duckdb_get_value_type,duckdb_value	proc duckdb_get_value_type(val: duckdb_value): duckdb_logical_type		395
+nim	duckdb_get_blob	duckdb/bindings.html#duckdb_get_blob,duckdb_value	proc duckdb_get_blob(val: duckdb_value): duckdb_blob		396
+nim	duckdb_get_bit	duckdb/bindings.html#duckdb_get_bit,duckdb_value	proc duckdb_get_bit(val: duckdb_value): duckdb_bit		397
+nim	duckdb_get_uuid	duckdb/bindings.html#duckdb_get_uuid,duckdb_value	proc duckdb_get_uuid(val: duckdb_value): duckdb_uhugeint		398
+nim	duckdb_get_varchar	duckdb/bindings.html#duckdb_get_varchar,duckdb_value	proc duckdb_get_varchar(value: duckdb_value): cstring		399
+nim	duckdb_create_struct_value	duckdb/bindings.html#duckdb_create_struct_value,duckdb_logical_type,ptr.duckdb_value	proc duckdb_create_struct_value(typ: duckdb_logical_type; values: ptr duckdb_value): duckdb_value		400
+nim	duckdb_create_list_value	duckdb/bindings.html#duckdb_create_list_value,duckdb_logical_type,ptr.duckdb_value,idx_t	proc duckdb_create_list_value(typ: duckdb_logical_type; values: ptr duckdb_value;\n                         value_count: idx_t): duckdb_value		401
+nim	duckdb_create_array_value	duckdb/bindings.html#duckdb_create_array_value,duckdb_logical_type,ptr.duckdb_value,idx_t	proc duckdb_create_array_value(typ: duckdb_logical_type; values: ptr duckdb_value;\n                          value_count: idx_t): duckdb_value		402
+nim	duckdb_create_map_value	duckdb/bindings.html#duckdb_create_map_value,duckdb_logical_type,ptr.duckdb_value,ptr.duckdb_value,idx_t	proc duckdb_create_map_value(map_type: duckdb_logical_type; keys: ptr duckdb_value;\n                        values: ptr duckdb_value; entry_count: idx_t): duckdb_value		403
+nim	duckdb_create_union_value	duckdb/bindings.html#duckdb_create_union_value,duckdb_logical_type,idx_t,duckdb_value	proc duckdb_create_union_value(union_type: duckdb_logical_type; tag_index: idx_t;\n                          value: duckdb_value): duckdb_value		404
+nim	duckdb_get_map_size	duckdb/bindings.html#duckdb_get_map_size,duckdb_value	proc duckdb_get_map_size(value: duckdb_value): idx_t		405
+nim	duckdb_get_map_key	duckdb/bindings.html#duckdb_get_map_key,duckdb_value,idx_t	proc duckdb_get_map_key(value: duckdb_value; index: idx_t): duckdb_value		406
+nim	duckdb_get_map_value	duckdb/bindings.html#duckdb_get_map_value,duckdb_value,idx_t	proc duckdb_get_map_value(value: duckdb_value; index: idx_t): duckdb_value		407
+nim	duckdb_is_null_value	duckdb/bindings.html#duckdb_is_null_value,duckdb_value	proc duckdb_is_null_value(value: duckdb_value): bool		408
+nim	duckdb_create_null_value	duckdb/bindings.html#duckdb_create_null_value	proc duckdb_create_null_value(): duckdb_value		409
+nim	duckdb_get_list_size	duckdb/bindings.html#duckdb_get_list_size,duckdb_value	proc duckdb_get_list_size(value: duckdb_value): idx_t		410
+nim	duckdb_get_list_child	duckdb/bindings.html#duckdb_get_list_child,duckdb_value,idx_t	proc duckdb_get_list_child(value: duckdb_value; index: idx_t): duckdb_value		411
+nim	duckdb_create_enum_value	duckdb/bindings.html#duckdb_create_enum_value,duckdb_logical_type,uint64	proc duckdb_create_enum_value(typ: duckdb_logical_type; value: uint64): duckdb_value		412
+nim	duckdb_get_enum_value	duckdb/bindings.html#duckdb_get_enum_value,duckdb_value	proc duckdb_get_enum_value(value: duckdb_value): uint64		413
+nim	duckdb_get_struct_child	duckdb/bindings.html#duckdb_get_struct_child,duckdb_value,idx_t	proc duckdb_get_struct_child(value: duckdb_value; index: idx_t): duckdb_value		414
+nim	duckdb_value_to_string	duckdb/bindings.html#duckdb_value_to_string,duckdb_value	proc duckdb_value_to_string(value: duckdb_value): cstring		415
+nim	duckdb_validity_row_is_valid	duckdb/bindings.html#duckdb_validity_row_is_valid,ptr.uint64,idx_t	proc duckdb_validity_row_is_valid(validity: ptr uint64; row: idx_t): bool		418
+nim	duckdb_validity_set_row_validity	duckdb/bindings.html#duckdb_validity_set_row_validity,ptr.uint64,idx_t,bool	proc duckdb_validity_set_row_validity(validity: ptr uint64; row: idx_t; valid: bool)		419
+nim	duckdb_validity_set_row_invalid	duckdb/bindings.html#duckdb_validity_set_row_invalid,ptr.uint64,idx_t	proc duckdb_validity_set_row_invalid(validity: ptr uint64; row: idx_t)		420
+nim	duckdb_validity_set_row_valid	duckdb/bindings.html#duckdb_validity_set_row_valid,ptr.uint64,idx_t	proc duckdb_validity_set_row_valid(validity: ptr uint64; row: idx_t)		421
+nim	duckdb_scalar_function	duckdb/bindings.html#duckdb_scalar_function	type duckdb_scalar_function		425
+nim	duckdb_scalar_function_set	duckdb/bindings.html#duckdb_scalar_function_set	type duckdb_scalar_function_set		426
+nim	duckdb_bind_info	duckdb/bindings.html#duckdb_bind_info	type duckdb_bind_info		427
+nim	duckdb_function_info	duckdb/bindings.html#duckdb_function_info	type duckdb_function_info		428
+nim	duckdb_delete_callback_t	duckdb/bindings.html#duckdb_delete_callback_t	type duckdb_delete_callback_t		429
+nim	duckdb_scalar_function_bind_t	duckdb/bindings.html#duckdb_scalar_function_bind_t	type duckdb_scalar_function_bind_t		430
+nim	duckdb_scalar_function_t	duckdb/bindings.html#duckdb_scalar_function_t	type duckdb_scalar_function_t		431
+nim	duckdb_create_scalar_function	duckdb/bindings.html#duckdb_create_scalar_function	proc duckdb_create_scalar_function(): duckdb_scalar_function		433
+nim	duckdb_destroy_scalar_function	duckdb/bindings.html#duckdb_destroy_scalar_function,ptr.duckdb_scalar_function	proc duckdb_destroy_scalar_function(scalar_function: ptr duckdb_scalar_function)		434
+nim	duckdb_scalar_function_set_name	duckdb/bindings.html#duckdb_scalar_function_set_name,duckdb_scalar_function,cstring	proc duckdb_scalar_function_set_name(scalar_function: duckdb_scalar_function;\n                                name: cstring)		435
+nim	duckdb_scalar_function_set_varargs	duckdb/bindings.html#duckdb_scalar_function_set_varargs,duckdb_scalar_function,duckdb_logical_type	proc duckdb_scalar_function_set_varargs(scalar_function: duckdb_scalar_function;\n                                   typ: duckdb_logical_type)		436
+nim	duckdb_scalar_function_set_special_handling	duckdb/bindings.html#duckdb_scalar_function_set_special_handling,duckdb_scalar_function	proc duckdb_scalar_function_set_special_handling(\n    scalar_function: duckdb_scalar_function)		437
+nim	duckdb_scalar_function_set_volatile	duckdb/bindings.html#duckdb_scalar_function_set_volatile,duckdb_scalar_function	proc duckdb_scalar_function_set_volatile(scalar_function: duckdb_scalar_function)		438
+nim	duckdb_scalar_function_add_parameter	duckdb/bindings.html#duckdb_scalar_function_add_parameter,duckdb_scalar_function,duckdb_logical_type	proc duckdb_scalar_function_add_parameter(scalar_function: duckdb_scalar_function;\n                                     typ: duckdb_logical_type)		439
+nim	duckdb_scalar_function_set_return_type	duckdb/bindings.html#duckdb_scalar_function_set_return_type,duckdb_scalar_function,duckdb_logical_type	proc duckdb_scalar_function_set_return_type(scalar_function: duckdb_scalar_function;\n                                       typ: duckdb_logical_type)		440
+nim	duckdb_scalar_function_set_extra_info	duckdb/bindings.html#duckdb_scalar_function_set_extra_info,duckdb_scalar_function,pointer,duckdb_delete_callback_t	proc duckdb_scalar_function_set_extra_info(scalar_function: duckdb_scalar_function;\n                                      extra_info: pointer;\n                                      destroy: duckdb_delete_callback_t)		441
+nim	duckdb_scalar_function_set_bind	duckdb/bindings.html#duckdb_scalar_function_set_bind,duckdb_scalar_function,duckdb_scalar_function_bind_t	proc duckdb_scalar_function_set_bind(scalar_function: duckdb_scalar_function;\n                                bind: duckdb_scalar_function_bind_t)		442
+nim	duckdb_scalar_function_set_bind_data	duckdb/bindings.html#duckdb_scalar_function_set_bind_data,duckdb_bind_info,pointer,duckdb_delete_callback_t	proc duckdb_scalar_function_set_bind_data(info: duckdb_bind_info; bind_data: pointer;\n                                     destroy: duckdb_delete_callback_t)		443
+nim	duckdb_scalar_function_bind_set_error	duckdb/bindings.html#duckdb_scalar_function_bind_set_error,duckdb_bind_info,cstring	proc duckdb_scalar_function_bind_set_error(info: duckdb_bind_info; error: cstring)		444
+nim	duckdb_scalar_function_set_function	duckdb/bindings.html#duckdb_scalar_function_set_function,duckdb_scalar_function,duckdb_scalar_function_t	proc duckdb_scalar_function_set_function(scalar_function: duckdb_scalar_function;\n                                    fn: duckdb_scalar_function_t)		445
+nim	duckdb_register_scalar_function	duckdb/bindings.html#duckdb_register_scalar_function,duckdb_connection,duckdb_scalar_function	proc duckdb_register_scalar_function(con: duckdb_connection;\n                                scalar_function: duckdb_scalar_function): duckdb_state		446
+nim	duckdb_scalar_function_get_extra_info	duckdb/bindings.html#duckdb_scalar_function_get_extra_info,duckdb_function_info	proc duckdb_scalar_function_get_extra_info(info: duckdb_function_info): pointer		447
+nim	duckdb_scalar_function_get_bind_data	duckdb/bindings.html#duckdb_scalar_function_get_bind_data,duckdb_function_info	proc duckdb_scalar_function_get_bind_data(info: duckdb_function_info): pointer		448
+nim	duckdb_scalar_function_get_client_context	duckdb/bindings.html#duckdb_scalar_function_get_client_context,duckdb_bind_info,ptr.duckdb_client_context	proc duckdb_scalar_function_get_client_context(info: duckdb_bind_info;\n    out_context: ptr duckdb_client_context)		449
+nim	duckdb_scalar_function_set_error	duckdb/bindings.html#duckdb_scalar_function_set_error,duckdb_function_info,cstring	proc duckdb_scalar_function_set_error(info: duckdb_function_info; error: cstring)		450
+nim	duckdb_create_scalar_function_set	duckdb/bindings.html#duckdb_create_scalar_function_set,cstring	proc duckdb_create_scalar_function_set(name: cstring): duckdb_scalar_function_set		451
+nim	duckdb_destroy_scalar_function_set	duckdb/bindings.html#duckdb_destroy_scalar_function_set,ptr.duckdb_scalar_function_set	proc duckdb_destroy_scalar_function_set(scalar_function_set: ptr duckdb_scalar_function_set)		452
+nim	duckdb_add_scalar_function_to_set	duckdb/bindings.html#duckdb_add_scalar_function_to_set,duckdb_scalar_function_set,duckdb_scalar_function	proc duckdb_add_scalar_function_to_set(set: duckdb_scalar_function_set;\n                                  fn: duckdb_scalar_function): duckdb_state		453
+nim	duckdb_register_scalar_function_set	duckdb/bindings.html#duckdb_register_scalar_function_set,duckdb_connection,duckdb_scalar_function_set	proc duckdb_register_scalar_function_set(con: duckdb_connection;\n                                    set: duckdb_scalar_function_set): duckdb_state		454
+nim	duckdb_selection_vector	duckdb/bindings.html#duckdb_selection_vector	type duckdb_selection_vector		458
+nim	sel_t	duckdb/bindings.html#sel_t	type sel_t		459
+nim	duckdb_create_selection_vector	duckdb/bindings.html#duckdb_create_selection_vector,idx_t	proc duckdb_create_selection_vector(size: idx_t): duckdb_selection_vector		461
+nim	duckdb_destroy_selection_vector	duckdb/bindings.html#duckdb_destroy_selection_vector,duckdb_selection_vector	proc duckdb_destroy_selection_vector(vector: duckdb_selection_vector)		462
+nim	duckdb_selection_vector_get_data_ptr	duckdb/bindings.html#duckdb_selection_vector_get_data_ptr,duckdb_selection_vector	proc duckdb_selection_vector_get_data_ptr(vector: duckdb_selection_vector): ptr sel_t		463
+nim	duckdb_aggregate_function	duckdb/bindings.html#duckdb_aggregate_function	type duckdb_aggregate_function		467
+nim	duckdb_aggregate_function_set	duckdb/bindings.html#duckdb_aggregate_function_set	type duckdb_aggregate_function_set		468
+nim	duckdb_aggregate_state_size	duckdb/bindings.html#duckdb_aggregate_state_size	type duckdb_aggregate_state_size		469
+nim	duckdb_aggregate_init_t	duckdb/bindings.html#duckdb_aggregate_init_t	type duckdb_aggregate_init_t		470
+nim	duckdb_aggregate_update_t	duckdb/bindings.html#duckdb_aggregate_update_t	type duckdb_aggregate_update_t		471
+nim	duckdb_aggregate_combine_t	duckdb/bindings.html#duckdb_aggregate_combine_t	type duckdb_aggregate_combine_t		472
+nim	duckdb_aggregate_finalize_t	duckdb/bindings.html#duckdb_aggregate_finalize_t	type duckdb_aggregate_finalize_t		473
+nim	duckdb_aggregate_destroy_t	duckdb/bindings.html#duckdb_aggregate_destroy_t	type duckdb_aggregate_destroy_t		474
+nim	duckdb_create_aggregate_function	duckdb/bindings.html#duckdb_create_aggregate_function	proc duckdb_create_aggregate_function(): duckdb_aggregate_function		476
+nim	duckdb_destroy_aggregate_function	duckdb/bindings.html#duckdb_destroy_aggregate_function,ptr.duckdb_aggregate_function	proc duckdb_destroy_aggregate_function(aggregate_function: ptr duckdb_aggregate_function)		477
+nim	duckdb_aggregate_function_set_name	duckdb/bindings.html#duckdb_aggregate_function_set_name,duckdb_aggregate_function,cstring	proc duckdb_aggregate_function_set_name(aggregate_function: duckdb_aggregate_function;\n                                   name: cstring)		478
+nim	duckdb_aggregate_function_add_parameter	duckdb/bindings.html#duckdb_aggregate_function_add_parameter,duckdb_aggregate_function,duckdb_logical_type	proc duckdb_aggregate_function_add_parameter(aggregate_function: duckdb_aggregate_function;\n                                        typ: duckdb_logical_type)		479
+nim	duckdb_aggregate_function_set_return_type	duckdb/bindings.html#duckdb_aggregate_function_set_return_type,duckdb_aggregate_function,duckdb_logical_type	proc duckdb_aggregate_function_set_return_type(\n    aggregate_function: duckdb_aggregate_function; typ: duckdb_logical_type)		480
+nim	duckdb_aggregate_function_set_functions	duckdb/bindings.html#duckdb_aggregate_function_set_functions,duckdb_aggregate_function,duckdb_aggregate_state_size,duckdb_aggregate_init_t,duckdb_aggregate_update_t,duckdb_aggregate_combine_t,duckdb_aggregate_finalize_t	proc duckdb_aggregate_function_set_functions(aggregate_function: duckdb_aggregate_function;\n    state_size: duckdb_aggregate_state_size;\n                                        state_init: duckdb_aggregate_init_t;\n                                        update: duckdb_aggregate_update_t;\n                                        combine: duckdb_aggregate_combine_t;\n                                        finalize: duckdb_aggregate_finalize_t)		481
+nim	duckdb_aggregate_function_set_destructor	duckdb/bindings.html#duckdb_aggregate_function_set_destructor,duckdb_aggregate_function,duckdb_aggregate_destroy_t	proc duckdb_aggregate_function_set_destructor(\n    aggregate_function: duckdb_aggregate_function;\n    destroy: duckdb_aggregate_destroy_t)		482
+nim	duckdb_register_aggregate_function	duckdb/bindings.html#duckdb_register_aggregate_function,duckdb_connection,duckdb_aggregate_function	proc duckdb_register_aggregate_function(con: duckdb_connection; aggregate_function: duckdb_aggregate_function): duckdb_state		483
+nim	duckdb_aggregate_function_set_special_handling	duckdb/bindings.html#duckdb_aggregate_function_set_special_handling,duckdb_aggregate_function	proc duckdb_aggregate_function_set_special_handling(\n    aggregate_function: duckdb_aggregate_function)		484
+nim	duckdb_aggregate_function_set_extra_info	duckdb/bindings.html#duckdb_aggregate_function_set_extra_info,duckdb_aggregate_function,pointer,duckdb_delete_callback_t	proc duckdb_aggregate_function_set_extra_info(\n    aggregate_function: duckdb_aggregate_function; extra_info: pointer;\n    destroy: duckdb_delete_callback_t)		485
+nim	duckdb_aggregate_function_get_extra_info	duckdb/bindings.html#duckdb_aggregate_function_get_extra_info,duckdb_function_info	proc duckdb_aggregate_function_get_extra_info(info: duckdb_function_info): pointer		486
+nim	duckdb_aggregate_function_set_error	duckdb/bindings.html#duckdb_aggregate_function_set_error,duckdb_function_info,cstring	proc duckdb_aggregate_function_set_error(info: duckdb_function_info; error: cstring)		487
+nim	duckdb_create_aggregate_function_set	duckdb/bindings.html#duckdb_create_aggregate_function_set,cstring	proc duckdb_create_aggregate_function_set(name: cstring): duckdb_aggregate_function_set		488
+nim	duckdb_destroy_aggregate_function_set	duckdb/bindings.html#duckdb_destroy_aggregate_function_set,ptr.duckdb_aggregate_function_set	proc duckdb_destroy_aggregate_function_set(aggregate_function_set: ptr duckdb_aggregate_function_set)		489
+nim	duckdb_add_aggregate_function_to_set	duckdb/bindings.html#duckdb_add_aggregate_function_to_set,duckdb_aggregate_function_set,duckdb_aggregate_function	proc duckdb_add_aggregate_function_to_set(set: duckdb_aggregate_function_set;\n                                     fn: duckdb_aggregate_function): duckdb_state		490
+nim	duckdb_register_aggregate_function_set	duckdb/bindings.html#duckdb_register_aggregate_function_set,duckdb_connection,duckdb_aggregate_function_set	proc duckdb_register_aggregate_function_set(con: duckdb_connection;\n                                       set: duckdb_aggregate_function_set): duckdb_state		491
+nim	duckdb_table_function	duckdb/bindings.html#duckdb_table_function	type duckdb_table_function		497
+nim	duckdb_create_table_function	duckdb/bindings.html#duckdb_create_table_function	proc duckdb_create_table_function(): duckdb_table_function		499
+nim	duckdb_destroy_table_function	duckdb/bindings.html#duckdb_destroy_table_function,ptr.duckdb_table_function	proc duckdb_destroy_table_function(table_function: ptr duckdb_table_function)		500
+nim	duckdb_table_function_set_name	duckdb/bindings.html#duckdb_table_function_set_name,duckdb_table_function,cstring	proc duckdb_table_function_set_name(table_function: duckdb_table_function;\n                               name: cstring)		501
+nim	duckdb_table_function_add_parameter	duckdb/bindings.html#duckdb_table_function_add_parameter,duckdb_table_function,duckdb_logical_type	proc duckdb_table_function_add_parameter(table_function: duckdb_table_function;\n                                    typ: duckdb_logical_type)		502
+nim	duckdb_table_function_add_named_parameter	duckdb/bindings.html#duckdb_table_function_add_named_parameter,duckdb_table_function,cstring,duckdb_logical_type	proc duckdb_table_function_add_named_parameter(table_function: duckdb_table_function;\n    name: cstring; typ: duckdb_logical_type)		503
+nim	duckdb_table_function_set_extra_info	duckdb/bindings.html#duckdb_table_function_set_extra_info,duckdb_table_function,pointer,duckdb_delete_callback_t	proc duckdb_table_function_set_extra_info(table_function: duckdb_table_function;\n                                     extra_info: pointer;\n                                     destroy: duckdb_delete_callback_t)		504
+nim	duckdb_table_function_set_bind	duckdb/bindings.html#duckdb_table_function_set_bind,duckdb_table_function,pointer	proc duckdb_table_function_set_bind(table_function: duckdb_table_function;\n                               bind: pointer)		505
+nim	duckdb_table_function_set_init	duckdb/bindings.html#duckdb_table_function_set_init,duckdb_table_function,pointer	proc duckdb_table_function_set_init(table_function: duckdb_table_function;\n                               init: pointer)		506
+nim	duckdb_table_function_set_local_init	duckdb/bindings.html#duckdb_table_function_set_local_init,duckdb_table_function,pointer	proc duckdb_table_function_set_local_init(table_function: duckdb_table_function;\n                                     init: pointer)		507
+nim	duckdb_table_function_set_function	duckdb/bindings.html#duckdb_table_function_set_function,duckdb_table_function,pointer	proc duckdb_table_function_set_function(table_function: duckdb_table_function;\n                                   fn: pointer)		508
+nim	duckdb_table_function_supports_projection_pushdown	duckdb/bindings.html#duckdb_table_function_supports_projection_pushdown,duckdb_table_function,bool	proc duckdb_table_function_supports_projection_pushdown(\n    table_function: duckdb_table_function; pushdown: bool)		509
+nim	duckdb_register_table_function	duckdb/bindings.html#duckdb_register_table_function,duckdb_connection,duckdb_table_function	proc duckdb_register_table_function(con: duckdb_connection; fn: duckdb_table_function): duckdb_state		510
+nim	duckdb_bind_get_extra_info	duckdb/bindings.html#duckdb_bind_get_extra_info,duckdb_bind_info	proc duckdb_bind_get_extra_info(info: duckdb_bind_info): pointer		513
+nim	duckdb_bind_add_result_column	duckdb/bindings.html#duckdb_bind_add_result_column,duckdb_bind_info,cstring,duckdb_logical_type	proc duckdb_bind_add_result_column(info: duckdb_bind_info; name: cstring;\n                              typ: duckdb_logical_type)		514
+nim	duckdb_bind_get_parameter_count	duckdb/bindings.html#duckdb_bind_get_parameter_count,duckdb_bind_info	proc duckdb_bind_get_parameter_count(info: duckdb_bind_info): idx_t		515
+nim	duckdb_bind_get_parameter	duckdb/bindings.html#duckdb_bind_get_parameter,duckdb_bind_info,idx_t	proc duckdb_bind_get_parameter(info: duckdb_bind_info; index: idx_t): duckdb_value		516
+nim	duckdb_bind_get_named_parameter	duckdb/bindings.html#duckdb_bind_get_named_parameter,duckdb_bind_info,cstring	proc duckdb_bind_get_named_parameter(info: duckdb_bind_info; name: cstring): duckdb_value		517
+nim	duckdb_bind_set_bind_data	duckdb/bindings.html#duckdb_bind_set_bind_data,duckdb_bind_info,pointer,duckdb_delete_callback_t	proc duckdb_bind_set_bind_data(info: duckdb_bind_info; bind_data: pointer;\n                          destroy: duckdb_delete_callback_t)		518
+nim	duckdb_bind_set_cardinality	duckdb/bindings.html#duckdb_bind_set_cardinality,duckdb_bind_info,idx_t,bool	proc duckdb_bind_set_cardinality(info: duckdb_bind_info; cardinality: idx_t;\n                            is_exact: bool)		519
+nim	duckdb_bind_set_error	duckdb/bindings.html#duckdb_bind_set_error,duckdb_bind_info,cstring	proc duckdb_bind_set_error(info: duckdb_bind_info; error: cstring)		520
+nim	duckdb_init_info	duckdb/bindings.html#duckdb_init_info	type duckdb_init_info		526
+nim	duckdb_init_get_extra_info	duckdb/bindings.html#duckdb_init_get_extra_info,duckdb_init_info	proc duckdb_init_get_extra_info(info: duckdb_init_info): pointer		528
+nim	duckdb_init_get_bind_data	duckdb/bindings.html#duckdb_init_get_bind_data,duckdb_init_info	proc duckdb_init_get_bind_data(info: duckdb_init_info): pointer		529
+nim	duckdb_init_set_init_data	duckdb/bindings.html#duckdb_init_set_init_data,duckdb_init_info,pointer,duckdb_delete_callback_t	proc duckdb_init_set_init_data(info: duckdb_init_info; init_data: pointer;\n                          destroy: duckdb_delete_callback_t)		530
+nim	duckdb_init_get_column_count	duckdb/bindings.html#duckdb_init_get_column_count,duckdb_init_info	proc duckdb_init_get_column_count(info: duckdb_init_info): idx_t		531
+nim	duckdb_init_get_column_index	duckdb/bindings.html#duckdb_init_get_column_index,duckdb_init_info,idx_t	proc duckdb_init_get_column_index(info: duckdb_init_info; column_index: idx_t): idx_t		532
+nim	duckdb_init_set_max_threads	duckdb/bindings.html#duckdb_init_set_max_threads,duckdb_init_info,idx_t	proc duckdb_init_set_max_threads(info: duckdb_init_info; max_threads: idx_t)		533
+nim	duckdb_init_set_error	duckdb/bindings.html#duckdb_init_set_error,duckdb_init_info,cstring	proc duckdb_init_set_error(info: duckdb_init_info; error: cstring)		534
+nim	duckdb_function_get_extra_info	duckdb/bindings.html#duckdb_function_get_extra_info,duckdb_function_info	proc duckdb_function_get_extra_info(info: duckdb_function_info): pointer		539
+nim	duckdb_function_get_bind_data	duckdb/bindings.html#duckdb_function_get_bind_data,duckdb_function_info	proc duckdb_function_get_bind_data(info: duckdb_function_info): pointer		540
+nim	duckdb_function_get_init_data	duckdb/bindings.html#duckdb_function_get_init_data,duckdb_function_info	proc duckdb_function_get_init_data(info: duckdb_function_info): pointer		541
+nim	duckdb_function_get_local_init_data	duckdb/bindings.html#duckdb_function_get_local_init_data,duckdb_function_info	proc duckdb_function_get_local_init_data(info: duckdb_function_info): pointer		542
+nim	duckdb_function_set_error	duckdb/bindings.html#duckdb_function_set_error,duckdb_function_info,cstring	proc duckdb_function_set_error(info: duckdb_function_info; error: cstring)		543
+nim	duckdb_replacement_scan_info	duckdb/bindings.html#duckdb_replacement_scan_info	type duckdb_replacement_scan_info		549
+nim	duckdb_replacement_callback_t	duckdb/bindings.html#duckdb_replacement_callback_t	type duckdb_replacement_callback_t		550
+nim	duckdb_add_replacement_scan	duckdb/bindings.html#duckdb_add_replacement_scan,duckdb_database,duckdb_replacement_callback_t,pointer,duckdb_delete_callback_t	proc duckdb_add_replacement_scan(db: duckdb_database;\n                            replacement: duckdb_replacement_callback_t;\n                            extra_data: pointer;\n                            delete_callback: duckdb_delete_callback_t)		552
+nim	duckdb_replacement_scan_set_function_name	duckdb/bindings.html#duckdb_replacement_scan_set_function_name,duckdb_replacement_scan_info,cstring	proc duckdb_replacement_scan_set_function_name(info: duckdb_replacement_scan_info;\n    function_name: cstring)		553
+nim	duckdb_replacement_scan_add_parameter	duckdb/bindings.html#duckdb_replacement_scan_add_parameter,duckdb_replacement_scan_info,duckdb_value	proc duckdb_replacement_scan_add_parameter(info: duckdb_replacement_scan_info;\n                                      parameter: duckdb_value)		554
+nim	duckdb_replacement_scan_set_error	duckdb/bindings.html#duckdb_replacement_scan_set_error,duckdb_replacement_scan_info,cstring	proc duckdb_replacement_scan_set_error(info: duckdb_replacement_scan_info;\n                                  error: cstring)		555
+nim	duckdb_profiling_info	duckdb/bindings.html#duckdb_profiling_info	type duckdb_profiling_info		561
+nim	duckdb_get_profiling_info	duckdb/bindings.html#duckdb_get_profiling_info,duckdb_connection	proc duckdb_get_profiling_info(connection: duckdb_connection): duckdb_profiling_info		563
+nim	duckdb_profiling_info_get_value	duckdb/bindings.html#duckdb_profiling_info_get_value,duckdb_profiling_info,cstring	proc duckdb_profiling_info_get_value(info: duckdb_profiling_info; key: cstring): duckdb_value		564
+nim	duckdb_profiling_info_get_metrics	duckdb/bindings.html#duckdb_profiling_info_get_metrics,duckdb_profiling_info	proc duckdb_profiling_info_get_metrics(info: duckdb_profiling_info): duckdb_value		565
+nim	duckdb_profiling_info_get_child_count	duckdb/bindings.html#duckdb_profiling_info_get_child_count,duckdb_profiling_info	proc duckdb_profiling_info_get_child_count(info: duckdb_profiling_info): idx_t		566
+nim	duckdb_profiling_info_get_child	duckdb/bindings.html#duckdb_profiling_info_get_child,duckdb_profiling_info,idx_t	proc duckdb_profiling_info_get_child(info: duckdb_profiling_info; index: idx_t): duckdb_profiling_info		567
+nim	duckdb_appender	duckdb/bindings.html#duckdb_appender	type duckdb_appender		573
+nim	duckdb_appender_create	duckdb/bindings.html#duckdb_appender_create,duckdb_connection,cstring,cstring,ptr.duckdb_appender	proc duckdb_appender_create(connection: duckdb_connection; schema: cstring;\n                       table: cstring; out_appender: ptr duckdb_appender): duckdb_state		575
+nim	duckdb_appender_create_ext	duckdb/bindings.html#duckdb_appender_create_ext,duckdb_connection,cstring,cstring,cstring,ptr.duckdb_appender	proc duckdb_appender_create_ext(connection: duckdb_connection; catalog: cstring;\n                           schema: cstring; table: cstring;\n                           out_appender: ptr duckdb_appender): duckdb_state		576
+nim	duckdb_appender_column_count	duckdb/bindings.html#duckdb_appender_column_count,duckdb_appender	proc duckdb_appender_column_count(appender: duckdb_appender): idx_t		577
+nim	duckdb_appender_column_type	duckdb/bindings.html#duckdb_appender_column_type,duckdb_appender,idx_t	proc duckdb_appender_column_type(appender: duckdb_appender; col_idx: idx_t): duckdb_logical_type		578
+nim	duckdb_appender_error	duckdb/bindings.html#duckdb_appender_error,duckdb_appender	proc duckdb_appender_error(appender: duckdb_appender): cstring		579
+nim	duckdb_appender_flush	duckdb/bindings.html#duckdb_appender_flush,duckdb_appender	proc duckdb_appender_flush(appender: duckdb_appender): duckdb_state		580
+nim	duckdb_appender_close	duckdb/bindings.html#duckdb_appender_close,duckdb_appender	proc duckdb_appender_close(appender: duckdb_appender): duckdb_state		581
+nim	duckdb_appender_destroy	duckdb/bindings.html#duckdb_appender_destroy,ptr.duckdb_appender	proc duckdb_appender_destroy(appender: ptr duckdb_appender): duckdb_state		582
+nim	duckdb_appender_add_column	duckdb/bindings.html#duckdb_appender_add_column,duckdb_appender,cstring	proc duckdb_appender_add_column(appender: duckdb_appender; name: cstring): duckdb_state		583
+nim	duckdb_appender_clear_columns	duckdb/bindings.html#duckdb_appender_clear_columns,duckdb_appender	proc duckdb_appender_clear_columns(appender: duckdb_appender): duckdb_state		584
+nim	duckdb_appender_begin_row	duckdb/bindings.html#duckdb_appender_begin_row,duckdb_appender	proc duckdb_appender_begin_row(appender: duckdb_appender): duckdb_state		585
+nim	duckdb_appender_end_row	duckdb/bindings.html#duckdb_appender_end_row,duckdb_appender	proc duckdb_appender_end_row(appender: duckdb_appender): duckdb_state		586
+nim	duckdb_append_default	duckdb/bindings.html#duckdb_append_default,duckdb_appender	proc duckdb_append_default(appender: duckdb_appender): duckdb_state		587
+nim	duckdb_append_default_to_chunk	duckdb/bindings.html#duckdb_append_default_to_chunk,duckdb_appender,duckdb_data_chunk,idx_t,idx_t	proc duckdb_append_default_to_chunk(appender: duckdb_appender;\n                               chunk: duckdb_data_chunk; col: idx_t; row: idx_t): duckdb_state		588
+nim	duckdb_append_bool	duckdb/bindings.html#duckdb_append_bool,duckdb_appender,bool	proc duckdb_append_bool(appender: duckdb_appender; value: bool): duckdb_state		589
+nim	duckdb_append_int8	duckdb/bindings.html#duckdb_append_int8,duckdb_appender,int8	proc duckdb_append_int8(appender: duckdb_appender; value: int8): duckdb_state		590
+nim	duckdb_append_int16	duckdb/bindings.html#duckdb_append_int16,duckdb_appender,int16	proc duckdb_append_int16(appender: duckdb_appender; value: int16): duckdb_state		591
+nim	duckdb_append_int32	duckdb/bindings.html#duckdb_append_int32,duckdb_appender,int32	proc duckdb_append_int32(appender: duckdb_appender; value: int32): duckdb_state		592
+nim	duckdb_append_int64	duckdb/bindings.html#duckdb_append_int64,duckdb_appender,int64	proc duckdb_append_int64(appender: duckdb_appender; value: int64): duckdb_state		593
+nim	duckdb_append_hugeint	duckdb/bindings.html#duckdb_append_hugeint,duckdb_appender,duckdb_hugeint	proc duckdb_append_hugeint(appender: duckdb_appender; value: duckdb_hugeint): duckdb_state		594
+nim	duckdb_append_uint8	duckdb/bindings.html#duckdb_append_uint8,duckdb_appender,uint8	proc duckdb_append_uint8(appender: duckdb_appender; value: uint8): duckdb_state		595
+nim	duckdb_append_uint16	duckdb/bindings.html#duckdb_append_uint16,duckdb_appender,uint16	proc duckdb_append_uint16(appender: duckdb_appender; value: uint16): duckdb_state		596
+nim	duckdb_append_uint32	duckdb/bindings.html#duckdb_append_uint32,duckdb_appender,uint32	proc duckdb_append_uint32(appender: duckdb_appender; value: uint32): duckdb_state		597
+nim	duckdb_append_uint64	duckdb/bindings.html#duckdb_append_uint64,duckdb_appender,uint64	proc duckdb_append_uint64(appender: duckdb_appender; value: uint64): duckdb_state		598
+nim	duckdb_append_uhugeint	duckdb/bindings.html#duckdb_append_uhugeint,duckdb_appender,duckdb_uhugeint	proc duckdb_append_uhugeint(appender: duckdb_appender; value: duckdb_uhugeint): duckdb_state		599
+nim	duckdb_append_float	duckdb/bindings.html#duckdb_append_float,duckdb_appender,float32	proc duckdb_append_float(appender: duckdb_appender; value: float32): duckdb_state		600
+nim	duckdb_append_double	duckdb/bindings.html#duckdb_append_double,duckdb_appender,float64	proc duckdb_append_double(appender: duckdb_appender; value: float64): duckdb_state		601
+nim	duckdb_append_date	duckdb/bindings.html#duckdb_append_date,duckdb_appender,duckdb_date	proc duckdb_append_date(appender: duckdb_appender; value: duckdb_date): duckdb_state		602
+nim	duckdb_append_time	duckdb/bindings.html#duckdb_append_time,duckdb_appender,duckdb_time	proc duckdb_append_time(appender: duckdb_appender; value: duckdb_time): duckdb_state		603
+nim	duckdb_append_timestamp	duckdb/bindings.html#duckdb_append_timestamp,duckdb_appender,duckdb_timestamp	proc duckdb_append_timestamp(appender: duckdb_appender; value: duckdb_timestamp): duckdb_state		604
+nim	duckdb_append_interval	duckdb/bindings.html#duckdb_append_interval,duckdb_appender,duckdb_interval	proc duckdb_append_interval(appender: duckdb_appender; value: duckdb_interval): duckdb_state		605
+nim	duckdb_append_varchar	duckdb/bindings.html#duckdb_append_varchar,duckdb_appender,cstring	proc duckdb_append_varchar(appender: duckdb_appender; val: cstring): duckdb_state		606
+nim	duckdb_append_varchar_length	duckdb/bindings.html#duckdb_append_varchar_length,duckdb_appender,cstring,idx_t	proc duckdb_append_varchar_length(appender: duckdb_appender; val: cstring;\n                             length: idx_t): duckdb_state		607
+nim	duckdb_append_blob	duckdb/bindings.html#duckdb_append_blob,duckdb_appender,pointer,idx_t	proc duckdb_append_blob(appender: duckdb_appender; data: pointer; length: idx_t): duckdb_state		608
+nim	duckdb_append_null	duckdb/bindings.html#duckdb_append_null,duckdb_appender	proc duckdb_append_null(appender: duckdb_appender): duckdb_state		609
+nim	duckdb_append_value	duckdb/bindings.html#duckdb_append_value,duckdb_appender,duckdb_value	proc duckdb_append_value(appender: duckdb_appender; value: duckdb_value): duckdb_state		610
+nim	duckdb_append_data_chunk	duckdb/bindings.html#duckdb_append_data_chunk,duckdb_appender,duckdb_data_chunk	proc duckdb_append_data_chunk(appender: duckdb_appender; chunk: duckdb_data_chunk): duckdb_state		611
+nim	duckdb_table_description	duckdb/bindings.html#duckdb_table_description	type duckdb_table_description		617
+nim	duckdb_table_description_create	duckdb/bindings.html#duckdb_table_description_create,duckdb_connection,cstring,cstring,ptr.duckdb_table_description	proc duckdb_table_description_create(connection: duckdb_connection; schema: cstring;\n                                table: cstring;\n                                out_desc: ptr duckdb_table_description): duckdb_state		619
+nim	duckdb_table_description_create_ext	duckdb/bindings.html#duckdb_table_description_create_ext,duckdb_connection,cstring,cstring,cstring,ptr.duckdb_table_description	proc duckdb_table_description_create_ext(connection: duckdb_connection;\n                                    catalog: cstring; schema: cstring;\n                                    table: cstring;\n                                    out_desc: ptr duckdb_table_description): duckdb_state		620
+nim	duckdb_table_description_destroy	duckdb/bindings.html#duckdb_table_description_destroy,ptr.duckdb_table_description	proc duckdb_table_description_destroy(table_description: ptr duckdb_table_description)		621
+nim	duckdb_table_description_error	duckdb/bindings.html#duckdb_table_description_error,duckdb_table_description	proc duckdb_table_description_error(table_description: duckdb_table_description): cstring		622
+nim	duckdb_column_has_default	duckdb/bindings.html#duckdb_column_has_default,duckdb_table_description,idx_t,ptr.bool	proc duckdb_column_has_default(table_description: duckdb_table_description;\n                          index: idx_t; out: ptr bool): duckdb_state		623
+nim	duckdb_table_description_get_column_name	duckdb/bindings.html#duckdb_table_description_get_column_name,duckdb_table_description,idx_t	proc duckdb_table_description_get_column_name(\n    table_description: duckdb_table_description; index: idx_t): cstring		624
+nim	duckdb_arrow	duckdb/bindings.html#duckdb_arrow	type duckdb_arrow		630
+nim	duckdb_arrow_schema	duckdb/bindings.html#duckdb_arrow_schema	type duckdb_arrow_schema		631
+nim	duckdb_arrow_array	duckdb/bindings.html#duckdb_arrow_array	type duckdb_arrow_array		632
+nim	duckdb_arrow_stream	duckdb/bindings.html#duckdb_arrow_stream	type duckdb_arrow_stream		633
+nim	duckdb_query_arrow	duckdb/bindings.html#duckdb_query_arrow,duckdb_connection,cstring,ptr.duckdb_arrow	proc duckdb_query_arrow(connection: duckdb_connection; query: cstring;\n                   out_result: ptr duckdb_arrow): duckdb_state		635
+nim	duckdb_query_arrow_schema	duckdb/bindings.html#duckdb_query_arrow_schema,duckdb_arrow,ptr.duckdb_arrow_schema	proc duckdb_query_arrow_schema(result: duckdb_arrow;\n                          out_schema: ptr duckdb_arrow_schema): duckdb_state		636
+nim	duckdb_prepared_arrow_schema	duckdb/bindings.html#duckdb_prepared_arrow_schema,duckdb_prepared_statement,ptr.duckdb_arrow_schema	proc duckdb_prepared_arrow_schema(prepared: duckdb_prepared_statement;\n                             out_schema: ptr duckdb_arrow_schema): duckdb_state		637
+nim	duckdb_result_arrow_array	duckdb/bindings.html#duckdb_result_arrow_array,duckdb_result,duckdb_data_chunk,ptr.duckdb_arrow_array	proc duckdb_result_arrow_array(result: duckdb_result; chunk: duckdb_data_chunk;\n                          out_array: ptr duckdb_arrow_array)		638
+nim	duckdb_query_arrow_array	duckdb/bindings.html#duckdb_query_arrow_array,duckdb_arrow,ptr.duckdb_arrow_array	proc duckdb_query_arrow_array(result: duckdb_arrow; out_array: ptr duckdb_arrow_array): duckdb_state		639
+nim	duckdb_arrow_column_count	duckdb/bindings.html#duckdb_arrow_column_count,duckdb_arrow	proc duckdb_arrow_column_count(result: duckdb_arrow): idx_t		640
+nim	duckdb_arrow_row_count	duckdb/bindings.html#duckdb_arrow_row_count,duckdb_arrow	proc duckdb_arrow_row_count(result: duckdb_arrow): idx_t		641
+nim	duckdb_arrow_rows_changed	duckdb/bindings.html#duckdb_arrow_rows_changed,duckdb_arrow	proc duckdb_arrow_rows_changed(result: duckdb_arrow): idx_t		642
+nim	duckdb_query_arrow_error	duckdb/bindings.html#duckdb_query_arrow_error,duckdb_arrow	proc duckdb_query_arrow_error(result: duckdb_arrow): cstring		643
+nim	duckdb_destroy_arrow	duckdb/bindings.html#duckdb_destroy_arrow,ptr.duckdb_arrow	proc duckdb_destroy_arrow(result: ptr duckdb_arrow)		644
+nim	duckdb_destroy_arrow_stream	duckdb/bindings.html#duckdb_destroy_arrow_stream,duckdb_arrow_stream	proc duckdb_destroy_arrow_stream(stream_p: duckdb_arrow_stream)		645
+nim	duckdb_execute_prepared_arrow	duckdb/bindings.html#duckdb_execute_prepared_arrow,duckdb_prepared_statement,ptr.duckdb_arrow	proc duckdb_execute_prepared_arrow(prepared_statement: duckdb_prepared_statement;\n                              out_result: ptr duckdb_arrow): duckdb_state		646
+nim	duckdb_arrow_scan	duckdb/bindings.html#duckdb_arrow_scan,duckdb_connection,cstring,duckdb_arrow_stream	proc duckdb_arrow_scan(connection: duckdb_connection; table_name: cstring;\n                  arrow: duckdb_arrow_stream): duckdb_state		647
+nim	duckdb_arrow_array_scan	duckdb/bindings.html#duckdb_arrow_array_scan,duckdb_connection,cstring,duckdb_arrow_schema,duckdb_arrow_array,ptr.duckdb_arrow_stream	proc duckdb_arrow_array_scan(connection: duckdb_connection; table_name: cstring;\n                        arrow_schema: duckdb_arrow_schema;\n                        arrow_array: duckdb_arrow_array;\n                        out_stream: ptr duckdb_arrow_stream): duckdb_state		648
+nim	duckdb_task_state	duckdb/bindings.html#duckdb_task_state	type duckdb_task_state		654
+nim	duckdb_execute_tasks	duckdb/bindings.html#duckdb_execute_tasks,duckdb_database,idx_t	proc duckdb_execute_tasks(database: duckdb_database; max_tasks: idx_t)		656
+nim	duckdb_create_task_state	duckdb/bindings.html#duckdb_create_task_state,duckdb_database	proc duckdb_create_task_state(database: duckdb_database): duckdb_task_state		657
+nim	duckdb_execute_tasks_state	duckdb/bindings.html#duckdb_execute_tasks_state,duckdb_task_state	proc duckdb_execute_tasks_state(state: duckdb_task_state)		658
+nim	duckdb_execute_n_tasks_state	duckdb/bindings.html#duckdb_execute_n_tasks_state,duckdb_task_state,idx_t	proc duckdb_execute_n_tasks_state(state: duckdb_task_state; max_tasks: idx_t): idx_t		659
+nim	duckdb_finish_execution	duckdb/bindings.html#duckdb_finish_execution,duckdb_task_state	proc duckdb_finish_execution(state: duckdb_task_state)		660
+nim	duckdb_task_state_is_finished	duckdb/bindings.html#duckdb_task_state_is_finished,duckdb_task_state	proc duckdb_task_state_is_finished(state: duckdb_task_state): bool		661
+nim	duckdb_destroy_task_state	duckdb/bindings.html#duckdb_destroy_task_state,duckdb_task_state	proc duckdb_destroy_task_state(state: duckdb_task_state)		662
+nim	duckdb_execution_is_finished	duckdb/bindings.html#duckdb_execution_is_finished,duckdb_connection	proc duckdb_execution_is_finished(con: duckdb_connection): bool		663
+nim	duckdb_stream_fetch_chunk	duckdb/bindings.html#duckdb_stream_fetch_chunk,duckdb_result	proc duckdb_stream_fetch_chunk(result: duckdb_result): duckdb_data_chunk		666
+nim	duckdb_fetch_chunk	duckdb/bindings.html#duckdb_fetch_chunk,duckdb_result	proc duckdb_fetch_chunk(result: duckdb_result): duckdb_data_chunk		667
+nim	duckdb_cast_function	duckdb/bindings.html#duckdb_cast_function	type duckdb_cast_function		673
+nim	duckdb_cast_mode	duckdb/bindings.html#duckdb_cast_mode	type duckdb_cast_mode		674
+nim	duckdb_cast_function_t	duckdb/bindings.html#duckdb_cast_function_t	type duckdb_cast_function_t		675
+nim	duckdb_vector	duckdb/bindings.html#duckdb_vector	type duckdb_vector		676
+nim	duckdb_create_cast_function	duckdb/bindings.html#duckdb_create_cast_function	proc duckdb_create_cast_function(): duckdb_cast_function		678
+nim	duckdb_cast_function_set_source_type	duckdb/bindings.html#duckdb_cast_function_set_source_type,duckdb_cast_function,duckdb_logical_type	proc duckdb_cast_function_set_source_type(cast_function: duckdb_cast_function;\n                                     source_type: duckdb_logical_type)		679
+nim	duckdb_cast_function_set_target_type	duckdb/bindings.html#duckdb_cast_function_set_target_type,duckdb_cast_function,duckdb_logical_type	proc duckdb_cast_function_set_target_type(cast_function: duckdb_cast_function;\n                                     target_type: duckdb_logical_type)		680
+nim	duckdb_cast_function_set_implicit_cast_cost	duckdb/bindings.html#duckdb_cast_function_set_implicit_cast_cost,duckdb_cast_function,int64	proc duckdb_cast_function_set_implicit_cast_cost(cast_function: duckdb_cast_function;\n    cost: int64)		681
+nim	duckdb_cast_function_set_function	duckdb/bindings.html#duckdb_cast_function_set_function,duckdb_cast_function,duckdb_cast_function_t	proc duckdb_cast_function_set_function(cast_function: duckdb_cast_function;\n                                  fn: duckdb_cast_function_t)		682
+nim	duckdb_cast_function_set_extra_info	duckdb/bindings.html#duckdb_cast_function_set_extra_info,duckdb_cast_function,pointer,duckdb_delete_callback_t	proc duckdb_cast_function_set_extra_info(cast_function: duckdb_cast_function;\n                                    extra_info: pointer;\n                                    destroy: duckdb_delete_callback_t)		683
+nim	duckdb_cast_function_get_extra_info	duckdb/bindings.html#duckdb_cast_function_get_extra_info,duckdb_function_info	proc duckdb_cast_function_get_extra_info(info: duckdb_function_info): pointer		684
+nim	duckdb_cast_function_get_cast_mode	duckdb/bindings.html#duckdb_cast_function_get_cast_mode,duckdb_function_info	proc duckdb_cast_function_get_cast_mode(info: duckdb_function_info): duckdb_cast_mode		685
+nim	duckdb_cast_function_set_error	duckdb/bindings.html#duckdb_cast_function_set_error,duckdb_function_info,cstring	proc duckdb_cast_function_set_error(info: duckdb_function_info; error: cstring)		686
+nim	duckdb_cast_function_set_row_error	duckdb/bindings.html#duckdb_cast_function_set_row_error,duckdb_function_info,cstring,idx_t,duckdb_vector	proc duckdb_cast_function_set_row_error(info: duckdb_function_info; error: cstring;\n                                   row: idx_t; output: duckdb_vector)		687
+nim	duckdb_register_cast_function	duckdb/bindings.html#duckdb_register_cast_function,duckdb_connection,duckdb_cast_function	proc duckdb_register_cast_function(con: duckdb_connection;\n                              cast_function: duckdb_cast_function): duckdb_state		688
+nim	duckdb_destroy_cast_function	duckdb/bindings.html#duckdb_destroy_cast_function,ptr.duckdb_cast_function	proc duckdb_destroy_cast_function(cast_function: ptr duckdb_cast_function)		689

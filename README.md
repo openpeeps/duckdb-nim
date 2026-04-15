@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/">API reference</a><br>
+  <a href="https://openpeeps.github.io/duckdb-nim">API reference</a><br>
   <img src="https://github.com/openpeeps/duckdb-nim/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeeps/duckdb-nim/workflows/docs/badge.svg" alt="Github Actions">
 </p>
 
@@ -41,30 +41,10 @@ db.close()
 ```
 
 
-## Data Import
-DuckDB can directly connect to many popular data sources and offers several data ingestion methods that allow you to easily and efficiently fill up the database. Supported data sources include CSV, JSON and Parquet files.
+Check the [tests](https://github.com/openpeeps/duckdb-nim/blob/main/tests/test1.nim) for more examples.
 
-```nim
-import duckdb
 
-var db = open("my_database.duckdb")
-var dbCon = db.connect()
-
-for row in dbCon.getAllRows("SELECT * FROM read_json('data.json)"):
-  echo row
-
-dbCon.disconnect()
-db.close()
-```
-
-##### DuckDB List/Array
-If your JSON contains a list/array, you can cast to VARCHAR to get a JSON string representation of the array.
-
-```nim
-let res = dbCon.getAllRows(sql"SELECT * EXCLUDE (fruits), fruits::VARCHAR as fruits_json FROM read_json('test.json');")
-for row in res.rows:
-  echo row.get("fruits_json") # print the JSON string representation of the array
-```
+_more runnable examples soon..._
 
 
 ### ❤ Contributions & Support

@@ -26,10 +26,13 @@ jobs:
 
       - name: "Install DuckDB library"
         run: |
-          sudo apt-get install -y ninja-build libssl-dev libcurl4-openssl-dev
-          git clone https://github.com/duckdb/duckdb
-          cd duckdb
-          GEN=ninja make
+          sudo apt-get install -y unzip
+          curl -L -o libduckdb.zip https://install.duckdb.org/v1.5.2/libduckdb-linux-amd64.zip
+          unzip libduckdb.zip -d duckdb_lib
+          sudo cp duckdb_lib/duckdb.h /usr/local/include/
+          sudo cp duckdb_lib/duckdb.hpp /usr/local/include/
+          sudo cp duckdb_lib/libduckdb.so /usr/local/lib/
+          sudo ldconfig
 
       - run: nimble install -Y
       - run: nim c -r src/duckdb.nim

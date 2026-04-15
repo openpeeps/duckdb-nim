@@ -1,5 +1,5 @@
 <p align="center">
-  Nim SQL Driver For [DuckDB](https://duckdb.org/) database engine - A fast analytical database system<br>
+  Nim SQL Driver for <a href="https://duckdb.org/">DuckDB</a> database engine<br>A fast analytical database system
 </p>
 
 <p align="center">
@@ -8,8 +8,11 @@
 
 <p align="center">
   <a href="https://github.com/">API reference</a><br>
-  <img src="https://github.com/openpeeps/pistachio/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeeps/pistachio/workflows/docs/badge.svg" alt="Github Actions">
+  <img src="https://github.com/openpeeps/duckdb-nim/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeeps/duckdb-nim/workflows/docs/badge.svg" alt="Github Actions">
 </p>
+
+> [!NOTE]  
+> The high-level API is still a work in progress. Please check back later for updates.
 
 ## 😍 Key Features
 - [x] Low-level API for direct access to DuckDB
@@ -65,8 +68,8 @@ for row in res.rows:
 
 
 ### ❤ Contributions & Support
-- 🐛 Found a bug? [Create a new Issue](/issues)
-- 👋 Wanna help? [Fork it!](/fork)
+- 🐛 Found a bug? [Create a new Issue](https://github.com/openpeeps/duckdb-nim/issues)
+- 👋 Wanna help? [Fork it!](https://github.com/openpeeps/duckdb-nim/fork)
 - 😎 [Get €20 in cloud credits from Hetzner](https://hetzner.cloud/?ref=Hm0mYGM9NxZ4)
 
 ### 🎩 License

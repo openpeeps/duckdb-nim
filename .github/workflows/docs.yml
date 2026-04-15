@@ -3,11 +3,12 @@ on:
   push:
     tags:
       - '*.*.*'
-    # branches:
-    #   - main
+    branches:
+      - main
 env:
   nim-version: 'stable'
-  nim-src: src/${{ github.event.repository.name }}.nim
+  module-name: 'duckdb'
+  nim-src: src/duckdb.nim
   deploy-dir: .gh-pages
 jobs:
   docs:
@@ -21,16 +22,13 @@ jobs:
       - run: nim doc --index:on --project --path:. --out:${{ env.deploy-dir }} ${{ env.nim-src }}
       
       - name: "Rename to index.html"
-        run: mv ${{ env.deploy-dir }}/${{ github.event.repository.name }}.html ${{ env.deploy-dir }}/index.html 
+        run: mv ${{ env.deploy-dir }}/${{ env.module-name }}.html ${{ env.deploy-dir }}/index.html 
       
       - name: "Find and replace (index.html)"
-        run: sed -i 's/${{ github.event.repository.name }}.html/index.html/g' ${{ env.deploy-dir }}/index.html
-      
-      # - name: "Find and replace (idx)"
-      #   run: sed -i 's/${{ github.event.repository.name }}.html/index.html/g' ${{ env.deploy-dir }}/${{ github.event.repository.name }}.idx
-        
+        run: sed -i 's/${{ env.module-name }}.html/index.html/g' ${{ env.deploy-dir }}/index.html
+
       - name: "Find and replace (theindex.html)"
-        run: sed -i 's/${{ github.event.repository.name }}.html/index.html/g' ${{ env.deploy-dir }}/theindex.html
+        run: sed -i 's/${{ env.module-name }}.html/index.html/g' ${{ env.deploy-dir }}/theindex.html
         
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3

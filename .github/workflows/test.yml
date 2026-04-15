@@ -23,6 +23,14 @@ jobs:
         with:
           nim-version: ${{ matrix.nim-version }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Install DuckDB library"
+        run: |
+          sudo apt-get install -y ninja-build libssl-dev libcurl4-openssl-dev
+          git clone https://github.com/duckdb/duckdb
+          cd duckdb
+          GEN=ninja make
+
       - run: nimble install -Y
       - run: nim c -r src/duckdb.nim
       - run: nimble test

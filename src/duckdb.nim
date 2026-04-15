@@ -1,8 +1,5 @@
 # Nim bindings for DuckDB.
 #
-# This module implements High-level API based on `pkg/db_connector`
-# for connecting to and interacting with DuckDB databases.
-#
 # (c) 2025 George Lemon | MIT License
 #          Made by Humans from OpenPeeps
 #          https://github.com/openpeeps/duckdb-nim
@@ -13,7 +10,12 @@ import duckdb/bindings
 import pkg/bigints
 import pkg/db_connector/db_common
 
-export db_common
+export db_common, bindings
+
+## This module implements high-level API for DuckDB in Nim,
+## providing convenient functions for opening databases, executing queries, and retrieving results.
+## 
+## **Note**: This is a work in progress and currently only supports some basic operations
 
 #
 # Connections
@@ -94,118 +96,118 @@ proc tryExec*(conn: DuckDBConnection, sql: SQLQuery): bool =
 type
   DuckDBValue* = object
     ## Represents a value in a DuckDB row.
-    case `type`: DuckDBType
+    case kind*: DuckDBType
     of DUCKDB_TYPE_BOOLEAN:
-      booleanValue: bool
+      booleanValue*: bool
     of DUCKDB_TYPE_TINYINT:
-      tinyIntValue: int8
+      tinyIntValue*: int8
     of DUCKDB_TYPE_SMALLINT:
-      smallIntValue: int16
+      smallIntValue*: int16
     of DUCKDB_TYPE_INTEGER:
-      integerValue: int32
+      integerValue*: int32
     of DUCKDB_TYPE_BIGINT:
-      bigIntValue: int64
+      bigIntValue*: int64
     of DUCKDB_TYPE_UTINYINT:
-      uTinyIntValue: uint8
+      uTinyIntValue*: uint8
     of DUCKDB_TYPE_USMALLINT:
-      uSmallIntValue: uint16
+      uSmallIntValue*: uint16
     of DUCKDB_TYPE_UINTEGER:
-      uIntegerValue: uint32
+      uIntegerValue*: uint32
     of DUCKDB_TYPE_UBIGINT:
-      uBigIntValue: uint64
+      uBigIntValue*: uint64
     of DUCKDB_TYPE_FLOAT:
-      floatValue: float32
+      floatValue*: float32
     of DUCKDB_TYPE_DOUBLE:
-      doubleValue: float64
+      doubleValue*: float64
     of DUCKDB_TYPE_TIMESTAMP, DUCKDB_TYPE_DATE, DUCKDB_TYPE_TIME:
-      dateValue: string # FIXME: Use a proper date/time type
+      dateValue*: string # FIXME: Use a proper date/time type
     of DUCKDB_TYPE_INTERVAL:
-      intervalValue: string
+      intervalValue*: string
     of DUCKDB_TYPE_HUGEINT:
-      hugeIntValue: BigInt
+      hugeIntValue*: BigInt
     of DUCKDB_TYPE_UHUGEINT:
-      uHugeIntValue: BigInt
+      uHugeIntValue*: BigInt
     of DUCKDB_TYPE_VARCHAR, DUCKDB_TYPE_BLOB:
-      stringValue: string
+      stringValue*: string
     of DUCKDB_TYPE_DECIMAL:
-      decimalValue: string
+      decimalValue*: string
     of DUCKDB_TYPE_ENUM:
-      enumValue: string
+      enumValue*: string
     of DUCKDB_TYPE_LIST, DUCKDB_TYPE_STRUCT, DUCKDB_TYPE_MAP:
-      listValue: seq[DuckDBValue]
+      listValue*: seq[DuckDBValue]
     of DUCKDB_TYPE_ARRAY:
-      arrayValue: seq[DuckDBValue]
+      arrayValue*: seq[DuckDBValue]
     of DUCKDB_TYPE_UUID:
-      uuidValue: string
+      uuidValue*: string
     of DUCKDB_TYPE_UNION:
-      unionValue: seq[DuckDBValue]
+      unionValue*: seq[DuckDBValue]
     of DUCKDB_TYPE_BIT:
-      bitValue: seq[bool]
+      bitValue*: seq[bool]
     of DUCKDB_TYPE_TIME_TZ, DUCKDB_TYPE_TIMESTAMP_TZ:
-      timeValue: string
+      timeValue*: string
     else: discard # FIXME todo - handle other types
 
 proc getDuckDBValue*(res: ptr duckdb_result, j, i: idx_t): DuckDBValue =
   ## Get a DuckDBValue from the result set.
-  let `type` = duckdb_column_type(res, j)
-  case `type`
+  let kind = duckdb_column_type(res, j)
+  case kind
   of DUCKDB_TYPE_BOOLEAN:
-    result = DuckDBValue(`type`: `type`, booleanValue: duckdb_value_boolean(res, j, i))
+    result = DuckDBValue(kind: kind, booleanValue: duckdb_value_boolean(res, j, i))
   of DUCKDB_TYPE_TINYINT:
-    result = DuckDBValue(`type`: `type`, tinyIntValue: duckdb_value_int8(res, j, i))
+    result = DuckDBValue(kind: kind, tinyIntValue: duckdb_value_int8(res, j, i))
   of DUCKDB_TYPE_SMALLINT:
-    result = DuckDBValue(`type`: `type`, smallIntValue: duckdb_value_int16(res, j, i))
+    result = DuckDBValue(kind: kind, smallIntValue: duckdb_value_int16(res, j, i))
   of DUCKDB_TYPE_INTEGER:
-    result = DuckDBValue(`type`: `type`, integerValue: duckdb_value_int32(res, j, i))
+    result = DuckDBValue(kind: kind, integerValue: duckdb_value_int32(res, j, i))
   of DUCKDB_TYPE_BIGINT:
-    result = DuckDBValue(`type`: `type`, bigIntValue: duckdb_value_int64(res, j, i))
+    result = DuckDBValue(kind: kind, bigIntValue: duckdb_value_int64(res, j, i))
   of DUCKDB_TYPE_UTINYINT:
-    result = DuckDBValue(`type`: `type`, uTinyIntValue: duckdb_value_uint8(res, j, i))
+    result = DuckDBValue(kind: kind, uTinyIntValue: duckdb_value_uint8(res, j, i))
   of DUCKDB_TYPE_USMALLINT:
-    result = DuckDBValue(`type`: `type`, uSmallIntValue: duckdb_value_uint16(res, j, i))
+    result = DuckDBValue(kind: kind, uSmallIntValue: duckdb_value_uint16(res, j, i))
   of DUCKDB_TYPE_UINTEGER:
-    result = DuckDBValue(`type`: `type`, uIntegerValue: duckdb_value_uint32(res, j, i))
+    result = DuckDBValue(kind: kind, uIntegerValue: duckdb_value_uint32(res, j, i))
   of DUCKDB_TYPE_UBIGINT:
-    result = DuckDBValue(`type`: `type`, uBigIntValue: duckdb_value_uint64(res, j, i))
+    result = DuckDBValue(kind: kind, uBigIntValue: duckdb_value_uint64(res, j, i))
   of DUCKDB_TYPE_FLOAT:
-    result = DuckDBValue(`type`: `type`, floatValue: duckdb_value_float(res, j, i))
+    result = DuckDBValue(kind: kind, floatValue: duckdb_value_float(res, j, i))
   of DUCKDB_TYPE_DOUBLE:
-    result = DuckDBValue(`type`: `type`, doubleValue: duckdb_value_double(res, j, i))
+    result = DuckDBValue(kind: kind, doubleValue: duckdb_value_double(res, j, i))
   of DUCKDB_TYPE_TIMESTAMP, DUCKDB_TYPE_DATE, DUCKDB_TYPE_TIME:
     # let dstr = duckdb_value_string(res, j, i)
-    # result = DuckDBValue(`type`: `type`, dateValue: $cast[cstring](dstr.data))
+    # result = DuckDBValue(kind: kind, dateValue: $cast[cstring](dstr.data))
     discard
   of DUCKDB_TYPE_INTERVAL:
     # let dstr = duckdb_value_string(res, j, i)
-    # result = DuckDBValue(`type`: `type`, intervalValue: $cast[cstring](dstr.data))
+    # result = DuckDBValue(kind: kind, intervalValue: $cast[cstring](dstr.data))
     discard
   of DUCKDB_TYPE_HUGEINT:
     # Not implemented: duckdb_value_int128
-    # result = DuckDBValue(`type`: `type`, hugeIntValue: BigInt(0))
+    # result = DuckDBValue(kind: kind, hugeIntValue: BigInt(0))
     discard
   of DUCKDB_TYPE_UHUGEINT:
     # Not implemented: duckdb_value_uint128
-    # result = DuckDBValue(`type`: `type`, uHugeIntValue: BigInt(0))
+    # result = DuckDBValue(kind: kind, uHugeIntValue: BigInt(0))
     discard
   of DUCKDB_TYPE_VARCHAR:
-    result = DuckDBValue(`type`: `type`, stringValue: $(duckdb_value_varchar(res, j, i)))
+    result = DuckDBValue(kind: kind, stringValue: $(duckdb_value_varchar(res, j, i)))
   of DUCKDB_TYPE_BLOB:
     discard
-    # result = DuckDBValue(`type`: `type`, stringValue: $(duckdb_value_blob(res, j, i)))
+    # result = DuckDBValue(kind: kind, stringValue: $(duckdb_value_blob(res, j, i)))
   of DUCKDB_TYPE_DECIMAL:
     # let dstr = duckdb_value_string(res, j, i)
-    # result = DuckDBValue(`type`: `type`, decimalValue: $cast[cstring](dstr.data))
+    # result = DuckDBValue(kind: kind, decimalValue: $cast[cstring](dstr.data))
     discard
   of DUCKDB_TYPE_ENUM:
     # let dstr = duckdb_value_string(res, j, i)
-    # result = DuckDBValue(`type`: `type`, enumValue: $cast[cstring](dstr.data))
+    # result = DuckDBValue(kind: kind, enumValue: $cast[cstring](dstr.data))
     discard
   of DUCKDB_TYPE_LIST, DUCKDB_TYPE_STRUCT, DUCKDB_TYPE_MAP:
     discard # Not implemented. Cast to Varchar then parse JSON
   of DUCKDB_TYPE_ARRAY:
-    result = DuckDBValue(`type`: `type`, arrayValue: @[]) # Not implemented
+    result = DuckDBValue(kind: kind, arrayValue: @[]) # Not implemented
   of DUCKDB_TYPE_UUID:
-    result = DuckDBValue(`type`: `type`)
+    result = DuckDBValue(kind: kind)
     if duckdb_value_is_null(res, j, i):
       return # result is already initialized with default values
     # let uuidVal = duckdb_value_uhugeint(res, j, i)
@@ -213,15 +215,15 @@ proc getDuckDBValue*(res: ptr duckdb_result, j, i: idx_t): DuckDBValue =
     # echo uuidVal
     # result.uuidValue = uuidToString(uuidVal)
   of DUCKDB_TYPE_UNION:
-    result = DuckDBValue(`type`: `type`, unionValue: @[]) # Not implemented
+    result = DuckDBValue(kind: kind, unionValue: @[]) # Not implemented
   of DUCKDB_TYPE_BIT:
-    result = DuckDBValue(`type`: `type`, bitValue: @[]) # Not implemented
+    result = DuckDBValue(kind: kind, bitValue: @[]) # Not implemented
   of DUCKDB_TYPE_TIME_TZ, DUCKDB_TYPE_TIMESTAMP_TZ:
     # let dstr = duckdb_value_string(res, j, i)
-    # result = DuckDBValue(`type`: `type`, timeValue: $cast[cstring](dstr.data))
+    # result = DuckDBValue(kind: kind, timeValue: $cast[cstring](dstr.data))
     discard
   else:
-    raise newException(DuckDBQueryError, "Unsupported DuckDB type: " & $`type`)
+    raise newException(DuckDBQueryError, "Unsupported DuckDB type: " & $kind)
 
 type
   Row* = seq[DuckDBValue]
@@ -236,43 +238,44 @@ type
 
 proc `$`*(value: DuckDBValue): string =
   ## Convert a DuckDBValue to a string representation.
-  result = case value.type
-    of DUCKDB_TYPE_BOOLEAN:
-      $value.booleanValue
-    of DUCKDB_TYPE_TINYINT:
-      $value.tinyIntValue
-    of DUCKDB_TYPE_SMALLINT:
-      $value.smallIntValue
-    of DUCKDB_TYPE_INTEGER:
-      $value.integerValue
-    of DUCKDB_TYPE_BIGINT:
-      $value.bigIntValue
-    of DUCKDB_TYPE_UTINYINT:
-      $value.uTinyIntValue
-    of DUCKDB_TYPE_USMALLINT:
-      $value.uSmallIntValue
-    of DUCKDB_TYPE_UINTEGER:
-      $value.uIntegerValue
-    of DUCKDB_TYPE_UBIGINT:
-      $value.uBigIntValue
-    of DUCKDB_TYPE_FLOAT:
-      $value.floatValue
-    of DUCKDB_TYPE_DOUBLE:
-      $value.doubleValue
-    of DUCKDB_TYPE_TIMESTAMP, DUCKDB_TYPE_DATE, DUCKDB_TYPE_TIME: ""
-    of DUCKDB_TYPE_INTERVAL:
-      $value.intervalValue
-    of DUCKDB_TYPE_HUGEINT:
-      $value.hugeIntValue
-    # of DUCKDB_TYPE_UHUGEINT:
-      # $value.uHugeIntValue
-    of DUCKDB_TYPE_VARCHAR, DUCKDB_TYPE_BLOB:
-      value.stringValue
-    of DUCKDB_TYPE_DECIMAL:
-      value.decimalValue
-    of DUCKDB_TYPE_ENUM:
-      value.enumValue
-    else: ""
+  result =
+    case value.kind
+      of DUCKDB_TYPE_BOOLEAN:
+        $value.booleanValue
+      of DUCKDB_TYPE_TINYINT:
+        $value.tinyIntValue
+      of DUCKDB_TYPE_SMALLINT:
+        $value.smallIntValue
+      of DUCKDB_TYPE_INTEGER:
+        $value.integerValue
+      of DUCKDB_TYPE_BIGINT:
+        $value.bigIntValue
+      of DUCKDB_TYPE_UTINYINT:
+        $value.uTinyIntValue
+      of DUCKDB_TYPE_USMALLINT:
+        $value.uSmallIntValue
+      of DUCKDB_TYPE_UINTEGER:
+        $value.uIntegerValue
+      of DUCKDB_TYPE_UBIGINT:
+        $value.uBigIntValue
+      of DUCKDB_TYPE_FLOAT:
+        $value.floatValue
+      of DUCKDB_TYPE_DOUBLE:
+        $value.doubleValue
+      of DUCKDB_TYPE_TIMESTAMP, DUCKDB_TYPE_DATE, DUCKDB_TYPE_TIME: ""
+      of DUCKDB_TYPE_INTERVAL:
+        $value.intervalValue
+      of DUCKDB_TYPE_HUGEINT:
+        $value.hugeIntValue
+      # of DUCKDB_TYPE_UHUGEINT:
+        # $value.uHugeIntValue
+      of DUCKDB_TYPE_VARCHAR, DUCKDB_TYPE_BLOB:
+        value.stringValue
+      of DUCKDB_TYPE_DECIMAL:
+        value.decimalValue
+      of DUCKDB_TYPE_ENUM:
+        value.enumValue
+      else: ""
 
 proc toString*(value: DuckDBValue): string =
   ## Convert a DuckDBValue to a string representation.
@@ -298,4 +301,3 @@ proc getAllRows*(conn: DuckDBConnection, sql: SQLQuery): DuckDBResult =
       row.add(v)
     result.rows.add(row)
   duckdb_destroy_result(res.addr)
-

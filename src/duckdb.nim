@@ -81,8 +81,11 @@ proc disconnect*(conn: var DuckDBConnection) =
 proc exec*(conn: DuckDBConnection, sql: SQLQuery) =
   ## Execute a SQL query on the DuckDB connection.
   var res: duckdb_result
-  if DuckDBSuccess != duckdb_query(conn, sql.cstring, res.addr):
-    raise newException(DuckDBQueryError, "Failed to execute SQL query: " & sql.string)
+  try:
+    if DuckDBSuccess != duckdb_query(conn, sql.cstring, res.addr):
+      raise newException(DuckDBQueryError, "Failed to execute SQL query: " & sql.string)
+  finally:
+    duckdb_destroy_result(res.addr)
 
 proc tryExec*(conn: DuckDBConnection, sql: SQLQuery): bool =
   ## Try to execute a SQL query and return true if successful, false otherwise.
@@ -190,7 +193,9 @@ proc getDuckDBValue*(res: ptr duckdb_result, j, i: idx_t): DuckDBValue =
     # result = DuckDBValue(kind: kind, uHugeIntValue: BigInt(0))
     discard
   of DUCKDB_TYPE_VARCHAR:
-    result = DuckDBValue(kind: kind, stringValue: $(duckdb_value_varchar(res, j, i)))
+    var v = duckdb_value_varchar(res, j, i)
+    result = DuckDBValue(kind: kind, stringValue: $v)
+    duckdb_free(v)
   of DUCKDB_TYPE_BLOB:
     discard
     # result = DuckDBValue(kind: kind, stringValue: $(duckdb_value_blob(res, j, i)))

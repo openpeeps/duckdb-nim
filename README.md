@@ -27,16 +27,16 @@
 ```nim
 import duckdb
 
-var db = open("my_database.duckdb")
-var dbConn = db.connect()
+var db = duckdb.open("my_database.duckdb")
+var dbCon = db.connect()
 
 dbCon.exec(sql"CREATE TABLE IF NOT EXISTS users (id INTEGER, name VARCHAR);")
 dbCon.exec(sql"INSERT INTO users VALUES (1, 'Alice'), (2, 'Bob');")
 
-for row in dbCon.getAllRows("SELECT * FROM users;"):
+for row in dbCon.getAllRows(sql"SELECT * FROM users;").rows:
   echo row
 
-dbConn.disconnect()
+dbCon.disconnect()
 db.close()
 ```
 

@@ -16,13 +16,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.2.8">
+<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.2.10">
 
 <!-- JS -->
-<script type="text/javascript" src="dochack.js?v=2.2.8"></script>
+<script type="text/javascript" src="dochack.js?v=2.2.10"></script>
 </head>
 <body>
   <div class="document" id="documentId">
+    <input type="checkbox" id="nav-toggle" hidden>
+    <label for="nav-toggle" id="nav-burger">&#9776;</label>
+    <label for="nav-toggle" id="nav-overlay"></label>
     <div class="container">
       <h1 class="title">duckdb</h1>
       <div class="row">
@@ -203,7 +206,7 @@
   <h1><a class="toc-backref" href="#7">Types</a></h1>
   <dl class="item">
     <div id="DuckDBConnection">
-  <dt><pre><a href="index.html#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a> <span class="Other">=</span> <a href="duckdb/bindings.html#duckdb_connection"><span class="Identifier">duckdb_connection</span></a></pre></dt>
+  <dt><pre><a href="#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a> <span class="Other">=</span> <a href="duckdb/bindings.html#duckdb_connection"><span class="Identifier">duckdb_connection</span></a></pre></dt>
   <dd>
     
     Represents a connection to a DuckDB database.
@@ -211,7 +214,7 @@
   </dd>
 </div>
 <div id="DuckDBConnectionError">
-  <dt><pre><a href="index.html#DuckDBConnectionError"><span class="Identifier">DuckDBConnectionError</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">CatchableError</span></pre></dt>
+  <dt><pre><a href="#DuckDBConnectionError"><span class="Identifier">DuckDBConnectionError</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">CatchableError</span></pre></dt>
   <dd>
     
     
@@ -219,7 +222,7 @@
   </dd>
 </div>
 <div id="DuckDBInstance">
-  <dt><pre><a href="index.html#DuckDBInstance"><span class="Identifier">DuckDBInstance</span></a> <span class="Other">=</span> <a href="duckdb/bindings.html#duckdb_database"><span class="Identifier">duckdb_database</span></a></pre></dt>
+  <dt><pre><a href="#DuckDBInstance"><span class="Identifier">DuckDBInstance</span></a> <span class="Other">=</span> <a href="duckdb/bindings.html#duckdb_database"><span class="Identifier">duckdb_database</span></a></pre></dt>
   <dd>
     
     Represents a DuckDB database instance.
@@ -227,7 +230,7 @@
   </dd>
 </div>
 <div id="DuckDBQueryError">
-  <dt><pre><a href="index.html#DuckDBQueryError"><span class="Identifier">DuckDBQueryError</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">CatchableError</span></pre></dt>
+  <dt><pre><a href="#DuckDBQueryError"><span class="Identifier">DuckDBQueryError</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">CatchableError</span></pre></dt>
   <dd>
     
     
@@ -235,8 +238,8 @@
   </dd>
 </div>
 <div id="DuckDBResult">
-  <dt><pre><a href="index.html#DuckDBResult"><span class="Identifier">DuckDBResult</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">columns</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">,</span> <span class="Comment">## A sequence of column names in the result set.</span>
-                     <span class="Identifier">rows</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="index.html#Row"><span class="Identifier">Row</span></a><span class="Other">]</span><span class="Other">]</span></pre></dt>
+  <dt><pre><a href="#DuckDBResult"><span class="Identifier">DuckDBResult</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">columns</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">,</span> <span class="Comment">## A sequence of column names in the result set.</span>
+                     <span class="Identifier">rows</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="#Row"><span class="Identifier">Row</span></a><span class="Other">]</span><span class="Other">]</span></pre></dt>
   <dd>
     
     Represents the result of a DuckDB query.
@@ -244,7 +247,7 @@
   </dd>
 </div>
 <div id="DuckDBValue">
-  <dt><pre><a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <dt><pre><a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Keyword">case</span> <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="duckdb/bindings.html#DuckDBType"><span class="Identifier">DuckDBType</span></a>
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_BOOLEAN</span><span class="Other">:</span>
     <span class="Identifier">booleanValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
@@ -283,13 +286,13 @@
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_ENUM</span><span class="Other">:</span>
     <span class="Identifier">enumValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_LIST</span><span class="Other">,</span> <span class="Identifier">DUCKDB_TYPE_STRUCT</span><span class="Other">,</span> <span class="Identifier">DUCKDB_TYPE_MAP</span><span class="Other">:</span>
-    <span class="Identifier">listValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span>
+    <span class="Identifier">listValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span>
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_ARRAY</span><span class="Other">:</span>
-    <span class="Identifier">arrayValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span>
+    <span class="Identifier">arrayValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span>
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_UUID</span><span class="Other">:</span>
     <span class="Identifier">uuidValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_UNION</span><span class="Other">:</span>
-    <span class="Identifier">unionValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span>
+    <span class="Identifier">unionValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span>
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_BIT</span><span class="Other">:</span>
     <span class="Identifier">bitValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">bool</span><span class="Other">]</span>
   <span class="Keyword">of</span> <span class="Identifier">DUCKDB_TYPE_TIME_TZ</span><span class="Other">,</span> <span class="Identifier">DUCKDB_TYPE_TIMESTAMP_TZ</span><span class="Other">:</span>
@@ -303,7 +306,7 @@
   </dd>
 </div>
 <div id="Row">
-  <dt><pre><a href="index.html#Row"><span class="Identifier">Row</span></a> <span class="Other">=</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span></pre></dt>
+  <dt><pre><a href="#Row"><span class="Identifier">Row</span></a> <span class="Other">=</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     Represents a single row of data returned from a query.
@@ -317,7 +320,7 @@
   <h1><a class="toc-backref" href="#10">Consts</a></h1>
   <dl class="item">
     <div id="DuckDBError">
-  <dt><pre><a href="index.html#DuckDBError"><span class="Identifier">DuckDBError</span></a> <span class="Other">=</span> <span class="DecNumber">-1</span></pre></dt>
+  <dt><pre><a href="#DuckDBError"><span class="Identifier">DuckDBError</span></a> <span class="Other">=</span> <span class="DecNumber">-1</span></pre></dt>
   <dd>
     
     Indicates an error occurred during an operation.
@@ -325,7 +328,7 @@
   </dd>
 </div>
 <div id="DuckDBSuccess">
-  <dt><pre><a href="index.html#DuckDBSuccess"><span class="Identifier">DuckDBSuccess</span></a> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+  <dt><pre><a href="#DuckDBSuccess"><span class="Identifier">DuckDBSuccess</span></a> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
   <dd>
     
     Indicates a successful operation.
@@ -340,7 +343,7 @@
   <dl class="item">
     <div id="$-procs-all">
   <div id="$,DuckDBValue">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%24%2CDuckDBValue"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#%24%2CDuckDBValue"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Convert a DuckDBValue to a string representation.
@@ -351,7 +354,7 @@
 </div>
 <div id="close-procs-all">
   <div id="close,DuckDBConnection">
-  <dt><pre><span class="Keyword">proc</span> <a href="#close%2CDuckDBConnection"><span class="Identifier">close</span></a><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="index.html#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#close%2CDuckDBConnection"><span class="Identifier">close</span></a><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Close a database
@@ -362,7 +365,7 @@
 </div>
 <div id="connect-procs-all">
   <div id="connect,DuckDBInstance">
-  <dt><pre><span class="Keyword">proc</span> <a href="#connect%2CDuckDBInstance"><span class="Identifier">connect</span></a><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="index.html#DuckDBInstance"><span class="Identifier">DuckDBInstance</span></a><span class="Other">)</span><span class="Other">:</span> <a href="index.html#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#connect%2CDuckDBInstance"><span class="Identifier">connect</span></a><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="#DuckDBInstance"><span class="Identifier">DuckDBInstance</span></a><span class="Other">)</span><span class="Other">:</span> <a href="#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DuckDBConnectionError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -374,7 +377,7 @@
 </div>
 <div id="disconnect-procs-all">
   <div id="disconnect,DuckDBConnection">
-  <dt><pre><span class="Keyword">proc</span> <a href="#disconnect%2CDuckDBConnection"><span class="Identifier">disconnect</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="index.html#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#disconnect%2CDuckDBConnection"><span class="Identifier">disconnect</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Disconnect from the DuckDB connection.
@@ -385,7 +388,7 @@
 </div>
 <div id="exec-procs-all">
   <div id="exec,DuckDBConnection,SqlQuery">
-  <dt><pre><span class="Keyword">proc</span> <a href="#exec%2CDuckDBConnection%2CSqlQuery"><span class="Identifier">exec</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <a href="index.html#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">SqlQuery</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DuckDBQueryError</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#exec%2CDuckDBConnection%2CSqlQuery"><span class="Identifier">exec</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <a href="#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">SqlQuery</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DuckDBQueryError</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -397,7 +400,7 @@
 </div>
 <div id="getAllRows-procs-all">
   <div id="getAllRows,DuckDBConnection,SqlQuery">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getAllRows%2CDuckDBConnection%2CSqlQuery"><span class="Identifier">getAllRows</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <a href="index.html#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">SqlQuery</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#DuckDBResult"><span class="Identifier">DuckDBResult</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#getAllRows%2CDuckDBConnection%2CSqlQuery"><span class="Identifier">getAllRows</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <a href="#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">SqlQuery</span><span class="Other">)</span><span class="Other">:</span> <a href="#DuckDBResult"><span class="Identifier">DuckDBResult</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DuckDBQueryError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -409,7 +412,7 @@
 </div>
 <div id="getDuckDBValue-procs-all">
   <div id="getDuckDBValue,ptr.duckdb_result,idx_t,idx_t">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getDuckDBValue%2Cptr.duckdb_result%2Cidx_t%2Cidx_t"><span class="Identifier">getDuckDBValue</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="duckdb/bindings.html#duckdb_result"><span class="Identifier">duckdb_result</span></a><span class="Other">;</span> <span class="Identifier">j</span><span class="Other">,</span> <span class="Identifier">i</span><span class="Other">:</span> <a href="duckdb/bindings.html#idx_t"><span class="Identifier">idx_t</span></a><span class="Other">)</span><span class="Other">:</span> <a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#getDuckDBValue%2Cptr.duckdb_result%2Cidx_t%2Cidx_t"><span class="Identifier">getDuckDBValue</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="duckdb/bindings.html#duckdb_result"><span class="Identifier">duckdb_result</span></a><span class="Other">;</span> <span class="Identifier">j</span><span class="Other">,</span> <span class="Identifier">i</span><span class="Other">:</span> <a href="duckdb/bindings.html#idx_t"><span class="Identifier">idx_t</span></a><span class="Other">)</span><span class="Other">:</span> <a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DuckDBQueryError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -421,7 +424,7 @@
 </div>
 <div id="open-procs-all">
   <div id="open,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#open%2Cstring"><span class="Identifier">open</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#DuckDBInstance"><span class="Identifier">DuckDBInstance</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DuckDBConnectionError</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#open%2Cstring"><span class="Identifier">open</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="#DuckDBInstance"><span class="Identifier">DuckDBInstance</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DuckDBConnectionError</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -433,7 +436,7 @@
 </div>
 <div id="toString-procs-all">
   <div id="toString,DuckDBValue">
-  <dt><pre><span class="Keyword">proc</span> <a href="#toString%2CDuckDBValue"><span class="Identifier">toString</span></a><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <a href="index.html#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#toString%2CDuckDBValue"><span class="Identifier">toString</span></a><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <a href="#DuckDBValue"><span class="Identifier">DuckDBValue</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Convert a DuckDBValue to a string representation.
@@ -444,7 +447,7 @@
 </div>
 <div id="tryExec-procs-all">
   <div id="tryExec,DuckDBConnection,SqlQuery">
-  <dt><pre><span class="Keyword">proc</span> <a href="#tryExec%2CDuckDBConnection%2CSqlQuery"><span class="Identifier">tryExec</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <a href="index.html#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">SqlQuery</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#tryExec%2CDuckDBConnection%2CSqlQuery"><span class="Identifier">tryExec</span></a><span class="Other">(</span><span class="Identifier">conn</span><span class="Other">:</span> <a href="#DuckDBConnection"><span class="Identifier">DuckDBConnection</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">SqlQuery</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -470,7 +473,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-15 14:31:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-08-06 14:49:53 UTC</small>
       </div>
     </div>
   </div>
